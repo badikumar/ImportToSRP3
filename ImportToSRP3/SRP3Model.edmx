@@ -1,0 +1,2643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SRP3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Activities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActivityType" Type="tinyint" Nullable="false" />
+          <Property Name="DisplayStartDate" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="DisplayEndDate" Type="varchar" MaxLength="20" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="IsCompleted" Type="bit" Nullable="false" />
+          <Property Name="HasServiceProjects" Type="bit" />
+          <Property Name="Participants" Type="int" />
+          <Property Name="BahaiParticipants" Type="int" />
+          <Property Name="LocalityId" Type="bigint" Nullable="false" />
+          <Property Name="SubdivisionId" Type="bigint" />
+          <Property Name="IsOverrideParticipantCounts" Type="bit" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="datetime" />
+          <Property Name="ImportedFrom" Type="uniqueidentifier" />
+          <Property Name="ImportedFileType" Type="varchar" MaxLength="50" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LegacyId" Type="nvarchar" MaxLength="255" />
+          <Property Name="InstituteId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ActivityStudyItemIndividuals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IndividualType" Type="tinyint" Nullable="false" />
+          <Property Name="IndividualRole" Type="tinyint" Nullable="false" />
+          <Property Name="IsCurrent" Type="bit" Nullable="false" />
+          <Property Name="IsCompleted" Type="bit" Nullable="false" />
+          <Property Name="DisplayEndDate" Type="varchar" MaxLength="20" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="IndividualId" Type="bigint" Nullable="false" />
+          <Property Name="ActivityId" Type="bigint" />
+          <Property Name="StudyItemId" Type="bigint" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="datetime" />
+          <Property Name="ImportedFrom" Type="uniqueidentifier" />
+          <Property Name="ImportedFileType" Type="varchar" MaxLength="50" />
+          <Property Name="ActivityStudyItemId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ActivityStudyItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayStartDate" Type="varchar" MaxLength="20" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="DisplayEndDate" Type="varchar" MaxLength="20" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="IsCompleted" Type="bit" Nullable="false" />
+          <Property Name="ActivityId" Type="bigint" Nullable="false" />
+          <Property Name="StudyItemId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="datetime" />
+          <Property Name="ImportedFrom" Type="uniqueidentifier" />
+          <Property Name="ImportedFileType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ApplicationConfigurations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="varchar(max)" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationHistories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationVersion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActionTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="ApplicationGUID" Type="uniqueidentifier" />
+          <Property Name="IsRestored" Type="bit" />
+          <Property Name="Timestamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ClusterAuxiliaryBoardMembers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BoardMemberName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Order" Type="smallint" Nullable="false" />
+          <Property Name="ClusterId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="datetime" />
+          <Property Name="ImportedFrom" Type="uniqueidentifier" />
+          <Property Name="ImportedFileType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Clusters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LatinName" Type="nvarchar" MaxLength="255" />
+          <Property Name="StageOfDevelopment" Type="varchar" MaxLength="50" />
+          <Property Name="GeographicSize" Type="int" />
+          <Property Name="GeographicSizeUnit" Type="nvarchar" MaxLength="10" />
+          <Property Name="TotalPopulation" Type="int" />
+          <Property Name="ChildrenClassCoordinators" Type="int" />
+          <Property Name="JuniorYouthGroupCoordinators" Type="int" />
+          <Property Name="StudyCircleCoordinators" Type="int" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="RegionId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImportedFrom" Type="uniqueidentifier" />
+          <Property Name="ImportedTimestamp" Type="datetime" />
+          <Property Name="ImportedFileType" Type="varchar" MaxLength="50" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LegacyId" Type="nvarchar" MaxLength="255" />
+          <Property Name="InstituteId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cycles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayStartDate" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="DisplayEndDate" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="FriendsParticipatingInExpansionPhase" Type="int" />
+          <Property Name="CompletedBook1" Type="int" />
+          <Property Name="CompletedBook2" Type="int" />
+          <Property Name="CompletedBook3G1" Type="int" />
+          <Property Name="CompletedBook3G2" Type="int" />
+          <Property Name="CompletedBook3G3" Type="int" />
+          <Property Name="CompletedBook4" Type="int" />
+          <Property Name="CompletedBook5" Type="int" />
+          <Property Name="CompletedBook6" Type="int" />
+          <Property Name="CompletedBook7" Type="int" />
+          <Property Name="CompletedBook8" Type="int" />
+          <Property Name="CompletedBook9U1" Type="int" />
+          <Property Name="CompletedBook9U2" Type="int" />
+          <Property Name="CompletedBook11U1" Type="int" />
+          <Property Name="IsOverrideCompletedBookData" Type="bit" Nullable="false" />
+          <Property Name="DevotionalMeetingsNumber" Type="int" />
+          <Property Name="DevotionalMeetingsAttendance" Type="int" />
+          <Property Name="DevotionalMeetingsFriendsOfFaith" Type="int" />
+          <Property Name="IsOverrideDevotionalMeetingsData" Type="bit" Nullable="false" />
+          <Property Name="ChildrenClassesNumber" Type="int" />
+          <Property Name="ChildrenClassesAttendance" Type="int" />
+          <Property Name="ChildrenClassesFriendsOfFaith" Type="int" />
+          <Property Name="IsOverrideChildrenClassesDate" Type="bit" Nullable="false" />
+          <Property Name="JuniorYouthGroupsNumber" Type="int" />
+          <Property Name="JuniorYouthGroupsAttendance" Type="int" />
+          <Property Name="JuniorYouthGroupsFriendsOfFaith" Type="int" />
+          <Property Name="IsOverrideJuniorYouthGroupsData" Type="bit" Nullable="false" />
+          <Property Name="StudyCirclesNumber" Type="int" />
+          <Property Name="StudyCirclesAttendance" Type="int" />
+          <Property Name="StudyCirclesFriendsOfFaith" Type="int" />
+          <Property Name="IsOverrideStudyCirclesData" Type="bit" Nullable="false" />
+          <Property Name="ChildrenAndJuniorYouthRegisteredDuringCycle" Type="int" />
+          <Property Name="YouthAndAdultsEnrolledDuringCycle" Type="int" />
+          <Property Name="NewlyEnrolledBelieversInInstituteProcess" Type="int" />
+          <Property Name="IsOverrideExpansionDuringCycleData" Type="bit" Nullable="false" />
+          <Property Name="BahaiChildren" Type="int" />
+          <Property Name="BahaiJuniorYouth" Type="int" />
+          <Property Name="BahaiYouth" Type="int" />
+          <Property Name="BahaiAdultMen" Type="int" />
+          <Property Name="BahaiAdultWomen" Type="int" />
+          <Property Name="TotalBahaiBelievers" Type="int" />
+          <Property Name="IsOverrideBahaiPopulationData" Type="bit" Nullable="false" />
+          <Property Name="HomesVisitedForDeepening" Type="int" />
+          <Property Name="LocalitiesInNineteenDayFeastHeld" Type="int" />
+          <Property Name="NineteenDayFeastAttendanceEstimated" Type="int" />
+          <Property Name="LocalitiesObservedOneOrMoreHolyDays" Type="int" />
+          <Property Name="HolyDayAttendanceEstimated" Type="int" />
+          <Property Name="IsOverrideCommunityDevelopmentData" Type="bit" Nullable="false" />
+          <Property Name="ClusterId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="datetime" />
+          <Property Name="ImportedFrom" Type="uniqueidentifier" />
+          <Property Name="ImportedFileType" Type="varchar" MaxLength="50" />
+          <Property Name="IsCycleDateChanged" Type="bit" Nullable="false" />
+          <Property Name="IsLocalityDataChanged" Type="bit" Nullable="false" />
+          <Property Name="IsRecalculated" Type="bit" Nullable="false" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LegacyId" Type="nvarchar" MaxLength="255" />
+          <Property Name="InstituteId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="CompletedBook10" Type="int" />
+        </EntityType>
+        <EntityType Name="DBScriptHistories">
+          <Key>
+            <PropertyRef Name="ScriptName" />
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScriptName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Version" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TimeStamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="IndividualEmails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Order" Type="smallint" Nullable="false" />
+          <Property Name="IndividualId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="datetime" />
+          <Property Name="ImportedFrom" Type="uniqueidentifier" />
+          <Property Name="ImportedFileType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="IndividualPhones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Order" Type="smallint" Nullable="false" />
+          <Property Name="IndividualId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="datetime" />
+          <Property Name="ImportedFrom" Type="uniqueidentifier" />
+          <Property Name="ImportedFileType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Individuals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+          <Property Name="FamilyName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Gender" Type="tinyint" />
+          <Property Name="EstimatedYearOfBirthDate" Type="smallint" />
+          <Property Name="IsSelectedEstimatedYearOfBirthDate" Type="bit" Nullable="false" />
+          <Property Name="DisplayBirthDate" Type="varchar" MaxLength="20" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="IsRegisteredBahai" Type="bit" Nullable="false" />
+          <Property Name="DisplayRegistrationDate" Type="varchar" MaxLength="20" />
+          <Property Name="RegistrationDate" Type="datetime" />
+          <Property Name="UnRegisteredTimestamp" Type="datetime" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="IsArchived" Type="bit" Nullable="false" />
+          <Property Name="IsNonDuplicate" Type="bit" />
+          <Property Name="LegacyDataHadCurrentlyAttendingChildrensClass" Type="bit" Nullable="false" />
+          <Property Name="LegacyDataHadCurrentlyParticipatingInAJuniorYouthGroup" Type="bit" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="LocalityId" Type="bigint" Nullable="false" />
+          <Property Name="SubdivisionId" Type="bigint" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ArchivedTimestamp" Type="datetime" />
+          <Property Name="ImportedTimestamp" Type="datetime" />
+          <Property Name="ImportedFrom" Type="uniqueidentifier" />
+          <Property Name="ImportedFileType" Type="varchar" MaxLength="50" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LegacyId" Type="nvarchar" MaxLength="255" />
+          <Property Name="InstituteId" Type="nvarchar" MaxLength="50" />
+          <Property Name="WasLegacyRecord" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListColumns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="EntityType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TableName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ColumnName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SortColumnName" Type="varchar" MaxLength="100" />
+          <Property Name="FilterColumnName" Type="varchar" MaxLength="100" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="100" />
+          <Property Name="IsCalculated" Type="bit" Nullable="false" />
+          <Property Name="Expression" Type="varchar(max)" />
+          <Property Name="IsAvailableListColumn" Type="bit" Nullable="false" />
+          <Property Name="IsRequiredListColumn" Type="bit" Nullable="false" />
+          <Property Name="IsSelectableListColumn" Type="bit" Nullable="false" />
+          <Property Name="IsOrderableListColumn" Type="bit" Nullable="false" />
+          <Property Name="IsFilterableListColumn" Type="bit" Nullable="false" />
+          <Property Name="IsAvailableReportColumn" Type="bit" Nullable="false" />
+          <Property Name="IsRequiredReportColumn" Type="bit" Nullable="false" />
+          <Property Name="IsSelectableReportColumn" Type="bit" Nullable="false" />
+          <Property Name="IsOrderableReportColumn" Type="bit" Nullable="false" />
+          <Property Name="IsFilterableReportColumn" Type="bit" Nullable="false" />
+          <Property Name="ColumnType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Order" Type="smallint" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="IsAvailableExportColumn" Type="bit" Nullable="false" />
+          <Property Name="ListColumnGroupId" Type="bigint" />
+          <Property Name="ColumnCategory" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DBSortColumnName" Type="varchar" MaxLength="100" />
+          <Property Name="DBFilterColumnName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ListDisplayColumns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Order" Type="smallint" Nullable="false" />
+          <Property Name="ListId" Type="bigint" Nullable="false" />
+          <Property Name="ListColumnId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListFilterColumns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="Operator" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="100" />
+          <Property Name="Order" Type="smallint" Nullable="false" />
+          <Property Name="ListId" Type="bigint" Nullable="false" />
+          <Property Name="ListColumnId" Type="bigint" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ListType" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ListSubType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EntityType" Type="varchar" MaxLength="50" />
+          <Property Name="ListKey" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ListGroup" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="QueryPattern" Type="varchar" MaxLength="100" />
+          <Property Name="MainTable" Type="varchar" MaxLength="100" />
+          <Property Name="IsPredefined" Type="bit" Nullable="false" />
+          <Property Name="Order" Type="smallint" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="ReferenceId" Type="bigint" />
+          <Property Name="HasQuickFilter" Type="bit" Nullable="false" />
+          <Property Name="HasListDetails" Type="bit" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ExportListId" Type="bigint" />
+          <Property Name="IsIncludeSummaryRow" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListSortColumns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SortDirection" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Order" Type="smallint" Nullable="false" />
+          <Property Name="ListId" Type="bigint" Nullable="false" />
+          <Property Name="ListColumnId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoadDataFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FileType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FileDate" Type="datetime" Nullable="false" />
+          <Property Name="LoadedDate" Type="datetime" Nullable="false" />
+          <Property Name="LoadedItem" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SourceApplicationGUID" Type="uniqueidentifier" />
+          <Property Name="SourceApplicationVersion" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="LoadedToLocation" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Localities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LatinName" Type="nvarchar" MaxLength="255" />
+          <Property Name="HasLocalSpiritualAssembly" Type="bit" />
+          <Property Name="HasLocalFund" Type="bit" />
+          <Property Name="IsObservesNineteenDayFeast" Type="bit" />
+          <Property Name="NineteenDayFeastAttendance" Type="int" />
+          <Property Name="IsObservesHolyDays" Type="bit" />
+          <Property Name="HolyDayAttendance" Type="int" />
+          <Property Name="HasDevotionalMeetings" Type="bit" />
+          <Property Name="DevotionalMeetings" Type="int" />
+          <Property Name="DevotionalMeetingAttendance" Type="int" />
+          <Property Name="DevotionalMeetingFriendAttendance" Type="int" />
+          <Property Name="IsConductsHomeVisits" Type="bit" />
+          <Property Name="HomesVisited" Type="int" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="ClusterId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="datetime" />
+          <Property Name="ImportedFrom" Type="uniqueidentifier" />
+          <Property Name="ImportedFileType" Type="varchar" MaxLength="50" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LegacyId" Type="nvarchar" MaxLength="255" />
+          <Property Name="InstituteId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LocalizedStudyItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="Abbreviation" Type="nvarchar" MaxLength="10" />
+          <Property Name="StudyItemTypeName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="StudyItemId" Type="bigint" Nullable="false" />
+          <Property Name="Language" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NationalCommunities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LatinName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="datetime" />
+          <Property Name="ImportedFrom" Type="uniqueidentifier" />
+          <Property Name="ImportedFileType" Type="varchar" MaxLength="50" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LegacyId" Type="nvarchar" MaxLength="255" />
+          <Property Name="InstituteId" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsAnonymized" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Regions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LatinName" Type="nvarchar" MaxLength="255" />
+          <Property Name="HasBahaiCouncil" Type="bit" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="NationalCommunityId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImportedFrom" Type="uniqueidentifier" />
+          <Property Name="ImportedTimestamp" Type="datetime" />
+          <Property Name="ImportedFileType" Type="varchar" MaxLength="50" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LegacyId" Type="nvarchar" MaxLength="255" />
+          <Property Name="InstituteId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StudyItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="int" />
+          <Property Name="ActivityType" Type="tinyint" Nullable="false" />
+          <Property Name="ActivityStudyItemType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sequence" Type="int" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subdivisions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LatinName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="LocalityId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="datetime" />
+          <Property Name="ImportedFrom" Type="uniqueidentifier" />
+          <Property Name="ImportedFileType" Type="varchar" MaxLength="50" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LegacyId" Type="nvarchar" MaxLength="255" />
+          <Property Name="InstituteId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ActivityActivityStudyItem">
+          <End Role="Activities" Type="Self.Activities" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ActivityStudyItems" Type="Self.ActivityStudyItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityStudyItems">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityActivityStudyItemIndividual">
+          <End Role="Activities" Type="Self.Activities" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ActivityStudyItemIndividuals" Type="Self.ActivityStudyItemIndividuals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityStudyItemIndividuals">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityStudyItemActivityStudyItemIndividual">
+          <End Role="ActivityStudyItems" Type="Self.ActivityStudyItems" Multiplicity="0..1" />
+          <End Role="ActivityStudyItemIndividuals" Type="Self.ActivityStudyItemIndividuals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityStudyItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityStudyItemIndividuals">
+              <PropertyRef Name="ActivityStudyItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClusterClusterAuxiliaryBoardMember">
+          <End Role="Clusters" Type="Self.Clusters" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClusterAuxiliaryBoardMembers" Type="Self.ClusterAuxiliaryBoardMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clusters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClusterAuxiliaryBoardMembers">
+              <PropertyRef Name="ClusterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClusterCycle">
+          <End Role="Clusters" Type="Self.Clusters" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cycles" Type="Self.Cycles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clusters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cycles">
+              <PropertyRef Name="ClusterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClusterLocality">
+          <End Role="Clusters" Type="Self.Clusters" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Localities" Type="Self.Localities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clusters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Localities">
+              <PropertyRef Name="ClusterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IndividualActivityStudyItemIndividual">
+          <End Role="Individuals" Type="Self.Individuals" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ActivityStudyItemIndividuals" Type="Self.ActivityStudyItemIndividuals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Individuals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityStudyItemIndividuals">
+              <PropertyRef Name="IndividualId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IndividualIndividualEmail">
+          <End Role="Individuals" Type="Self.Individuals" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="IndividualEmails" Type="Self.IndividualEmails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Individuals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IndividualEmails">
+              <PropertyRef Name="IndividualId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IndividualIndividualPhone">
+          <End Role="Individuals" Type="Self.Individuals" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="IndividualPhones" Type="Self.IndividualPhones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Individuals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IndividualPhones">
+              <PropertyRef Name="IndividualId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListColumnListDisplayColumn">
+          <End Role="ListColumns" Type="Self.ListColumns" Multiplicity="1" />
+          <End Role="ListDisplayColumns" Type="Self.ListDisplayColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListColumns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListDisplayColumns">
+              <PropertyRef Name="ListColumnId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListColumnListFilterColumn">
+          <End Role="ListColumns" Type="Self.ListColumns" Multiplicity="0..1" />
+          <End Role="ListFilterColumns" Type="Self.ListFilterColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListColumns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListFilterColumns">
+              <PropertyRef Name="ListColumnId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListColumnListSortColumn">
+          <End Role="ListColumns" Type="Self.ListColumns" Multiplicity="1" />
+          <End Role="ListSortColumns" Type="Self.ListSortColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListColumns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListSortColumns">
+              <PropertyRef Name="ListColumnId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListFilterColumnListFilterColumn">
+          <End Role="ListFilterColumns" Type="Self.ListFilterColumns" Multiplicity="0..1" />
+          <End Role="ListFilterColumns1" Type="Self.ListFilterColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListFilterColumns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListFilterColumns1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListListDisplayColumn">
+          <End Role="Lists" Type="Self.Lists" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ListDisplayColumns" Type="Self.ListDisplayColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListDisplayColumns">
+              <PropertyRef Name="ListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListListFilterColumn">
+          <End Role="Lists" Type="Self.Lists" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ListFilterColumns" Type="Self.ListFilterColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListFilterColumns">
+              <PropertyRef Name="ListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListListSortColumn">
+          <End Role="Lists" Type="Self.Lists" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ListSortColumns" Type="Self.ListSortColumns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListSortColumns">
+              <PropertyRef Name="ListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalityActivity">
+          <End Role="Localities" Type="Self.Localities" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Activities" Type="Self.Activities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="LocalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalityIndividual">
+          <End Role="Localities" Type="Self.Localities" Multiplicity="1" />
+          <End Role="Individuals" Type="Self.Individuals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Individuals">
+              <PropertyRef Name="LocalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalitySubdivision">
+          <End Role="Localities" Type="Self.Localities" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Subdivisions" Type="Self.Subdivisions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subdivisions">
+              <PropertyRef Name="LocalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NationalCommunityRegion">
+          <End Role="NationalCommunities" Type="Self.NationalCommunities" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Regions" Type="Self.Regions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NationalCommunities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Regions">
+              <PropertyRef Name="NationalCommunityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegionCluster">
+          <End Role="Regions" Type="Self.Regions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Clusters" Type="Self.Clusters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clusters">
+              <PropertyRef Name="RegionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyItemActivityStudyItem">
+          <End Role="StudyItems" Type="Self.StudyItems" Multiplicity="1" />
+          <End Role="ActivityStudyItems" Type="Self.ActivityStudyItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudyItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityStudyItems">
+              <PropertyRef Name="StudyItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyItemActivityStudyItemIndividual">
+          <End Role="StudyItems" Type="Self.StudyItems" Multiplicity="0..1" />
+          <End Role="ActivityStudyItemIndividuals" Type="Self.ActivityStudyItemIndividuals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudyItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityStudyItemIndividuals">
+              <PropertyRef Name="StudyItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyItemLocalizedStudyItem">
+          <End Role="StudyItems" Type="Self.StudyItems" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LocalizedStudyItems" Type="Self.LocalizedStudyItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudyItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalizedStudyItems">
+              <PropertyRef Name="StudyItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubdivisionActivity">
+          <End Role="Subdivisions" Type="Self.Subdivisions" Multiplicity="0..1" />
+          <End Role="Activities" Type="Self.Activities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subdivisions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="SubdivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubdivisionIndividual">
+          <End Role="Subdivisions" Type="Self.Subdivisions" Multiplicity="0..1" />
+          <End Role="Individuals" Type="Self.Individuals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subdivisions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Individuals">
+              <PropertyRef Name="SubdivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SRP3ModelStoreContainer">
+          <EntitySet Name="Activities" EntityType="Self.Activities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActivityStudyItemIndividuals" EntityType="Self.ActivityStudyItemIndividuals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActivityStudyItems" EntityType="Self.ActivityStudyItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationConfigurations" EntityType="Self.ApplicationConfigurations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationHistories" EntityType="Self.ApplicationHistories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClusterAuxiliaryBoardMembers" EntityType="Self.ClusterAuxiliaryBoardMembers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clusters" EntityType="Self.Clusters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cycles" EntityType="Self.Cycles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DBScriptHistories" EntityType="Self.DBScriptHistories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IndividualEmails" EntityType="Self.IndividualEmails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IndividualPhones" EntityType="Self.IndividualPhones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Individuals" EntityType="Self.Individuals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListColumns" EntityType="Self.ListColumns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListDisplayColumns" EntityType="Self.ListDisplayColumns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListFilterColumns" EntityType="Self.ListFilterColumns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lists" EntityType="Self.Lists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListSortColumns" EntityType="Self.ListSortColumns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoadDataFiles" EntityType="Self.LoadDataFiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Localities" EntityType="Self.Localities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocalizedStudyItems" EntityType="Self.LocalizedStudyItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NationalCommunities" EntityType="Self.NationalCommunities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudyItems" EntityType="Self.StudyItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subdivisions" EntityType="Self.Subdivisions" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ActivityActivityStudyItem" Association="Self.FK_ActivityActivityStudyItem">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="ActivityStudyItems" EntitySet="ActivityStudyItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityActivityStudyItemIndividual" Association="Self.FK_ActivityActivityStudyItemIndividual">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="ActivityStudyItemIndividuals" EntitySet="ActivityStudyItemIndividuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityStudyItemActivityStudyItemIndividual" Association="Self.FK_ActivityStudyItemActivityStudyItemIndividual">
+            <End Role="ActivityStudyItems" EntitySet="ActivityStudyItems" />
+            <End Role="ActivityStudyItemIndividuals" EntitySet="ActivityStudyItemIndividuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClusterClusterAuxiliaryBoardMember" Association="Self.FK_ClusterClusterAuxiliaryBoardMember">
+            <End Role="Clusters" EntitySet="Clusters" />
+            <End Role="ClusterAuxiliaryBoardMembers" EntitySet="ClusterAuxiliaryBoardMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClusterCycle" Association="Self.FK_ClusterCycle">
+            <End Role="Clusters" EntitySet="Clusters" />
+            <End Role="Cycles" EntitySet="Cycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClusterLocality" Association="Self.FK_ClusterLocality">
+            <End Role="Clusters" EntitySet="Clusters" />
+            <End Role="Localities" EntitySet="Localities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IndividualActivityStudyItemIndividual" Association="Self.FK_IndividualActivityStudyItemIndividual">
+            <End Role="Individuals" EntitySet="Individuals" />
+            <End Role="ActivityStudyItemIndividuals" EntitySet="ActivityStudyItemIndividuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IndividualIndividualEmail" Association="Self.FK_IndividualIndividualEmail">
+            <End Role="Individuals" EntitySet="Individuals" />
+            <End Role="IndividualEmails" EntitySet="IndividualEmails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IndividualIndividualPhone" Association="Self.FK_IndividualIndividualPhone">
+            <End Role="Individuals" EntitySet="Individuals" />
+            <End Role="IndividualPhones" EntitySet="IndividualPhones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListColumnListDisplayColumn" Association="Self.FK_ListColumnListDisplayColumn">
+            <End Role="ListColumns" EntitySet="ListColumns" />
+            <End Role="ListDisplayColumns" EntitySet="ListDisplayColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListColumnListFilterColumn" Association="Self.FK_ListColumnListFilterColumn">
+            <End Role="ListColumns" EntitySet="ListColumns" />
+            <End Role="ListFilterColumns" EntitySet="ListFilterColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListColumnListSortColumn" Association="Self.FK_ListColumnListSortColumn">
+            <End Role="ListColumns" EntitySet="ListColumns" />
+            <End Role="ListSortColumns" EntitySet="ListSortColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListFilterColumnListFilterColumn" Association="Self.FK_ListFilterColumnListFilterColumn">
+            <End Role="ListFilterColumns" EntitySet="ListFilterColumns" />
+            <End Role="ListFilterColumns1" EntitySet="ListFilterColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListListDisplayColumn" Association="Self.FK_ListListDisplayColumn">
+            <End Role="Lists" EntitySet="Lists" />
+            <End Role="ListDisplayColumns" EntitySet="ListDisplayColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListListFilterColumn" Association="Self.FK_ListListFilterColumn">
+            <End Role="Lists" EntitySet="Lists" />
+            <End Role="ListFilterColumns" EntitySet="ListFilterColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListListSortColumn" Association="Self.FK_ListListSortColumn">
+            <End Role="Lists" EntitySet="Lists" />
+            <End Role="ListSortColumns" EntitySet="ListSortColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalityActivity" Association="Self.FK_LocalityActivity">
+            <End Role="Localities" EntitySet="Localities" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalityIndividual" Association="Self.FK_LocalityIndividual">
+            <End Role="Localities" EntitySet="Localities" />
+            <End Role="Individuals" EntitySet="Individuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalitySubdivision" Association="Self.FK_LocalitySubdivision">
+            <End Role="Localities" EntitySet="Localities" />
+            <End Role="Subdivisions" EntitySet="Subdivisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NationalCommunityRegion" Association="Self.FK_NationalCommunityRegion">
+            <End Role="NationalCommunities" EntitySet="NationalCommunities" />
+            <End Role="Regions" EntitySet="Regions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegionCluster" Association="Self.FK_RegionCluster">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="Clusters" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyItemActivityStudyItem" Association="Self.FK_StudyItemActivityStudyItem">
+            <End Role="StudyItems" EntitySet="StudyItems" />
+            <End Role="ActivityStudyItems" EntitySet="ActivityStudyItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyItemActivityStudyItemIndividual" Association="Self.FK_StudyItemActivityStudyItemIndividual">
+            <End Role="StudyItems" EntitySet="StudyItems" />
+            <End Role="ActivityStudyItemIndividuals" EntitySet="ActivityStudyItemIndividuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyItemLocalizedStudyItem" Association="Self.FK_StudyItemLocalizedStudyItem">
+            <End Role="StudyItems" EntitySet="StudyItems" />
+            <End Role="LocalizedStudyItems" EntitySet="LocalizedStudyItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubdivisionActivity" Association="Self.FK_SubdivisionActivity">
+            <End Role="Subdivisions" EntitySet="Subdivisions" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubdivisionIndividual" Association="Self.FK_SubdivisionIndividual">
+            <End Role="Subdivisions" EntitySet="Subdivisions" />
+            <End Role="Individuals" EntitySet="Individuals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SRP3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityType" Type="Byte" Nullable="false" />
+          <Property Name="DisplayStartDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DisplayEndDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="HasServiceProjects" Type="Boolean" />
+          <Property Name="Participants" Type="Int32" />
+          <Property Name="BahaiParticipants" Type="Int32" />
+          <Property Name="LocalityId" Type="Int64" Nullable="false" />
+          <Property Name="SubdivisionId" Type="Int64" />
+          <Property Name="IsOverrideParticipantCounts" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedFrom" Type="Guid" />
+          <Property Name="ImportedFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="LegacyId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ActivityStudyItems" Relationship="Self.FK_ActivityActivityStudyItem" FromRole="Activities" ToRole="ActivityStudyItems" />
+          <NavigationProperty Name="ActivityStudyItemIndividuals" Relationship="Self.FK_ActivityActivityStudyItemIndividual" FromRole="Activities" ToRole="ActivityStudyItemIndividuals" />
+          <NavigationProperty Name="Locality" Relationship="Self.FK_LocalityActivity" FromRole="Activities" ToRole="Localities" />
+          <NavigationProperty Name="Subdivision" Relationship="Self.FK_SubdivisionActivity" FromRole="Activities" ToRole="Subdivisions" />
+        </EntityType>
+        <EntityType Name="ActivityStudyItemIndividual">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IndividualType" Type="Byte" Nullable="false" />
+          <Property Name="IndividualRole" Type="Byte" Nullable="false" />
+          <Property Name="IsCurrent" Type="Boolean" Nullable="false" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayEndDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="IndividualId" Type="Int64" Nullable="false" />
+          <Property Name="ActivityId" Type="Int64" />
+          <Property Name="StudyItemId" Type="Int64" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedFrom" Type="Guid" />
+          <Property Name="ImportedFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ActivityStudyItemId" Type="Int64" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_ActivityActivityStudyItemIndividual" FromRole="ActivityStudyItemIndividuals" ToRole="Activities" />
+          <NavigationProperty Name="ActivityStudyItem" Relationship="Self.FK_ActivityStudyItemActivityStudyItemIndividual" FromRole="ActivityStudyItemIndividuals" ToRole="ActivityStudyItems" />
+          <NavigationProperty Name="Individual" Relationship="Self.FK_IndividualActivityStudyItemIndividual" FromRole="ActivityStudyItemIndividuals" ToRole="Individuals" />
+          <NavigationProperty Name="StudyItem" Relationship="Self.FK_StudyItemActivityStudyItemIndividual" FromRole="ActivityStudyItemIndividuals" ToRole="StudyItems" />
+        </EntityType>
+        <EntityType Name="ActivityStudyItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayStartDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="DisplayEndDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="ActivityId" Type="Int64" Nullable="false" />
+          <Property Name="StudyItemId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedFrom" Type="Guid" />
+          <Property Name="ImportedFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_ActivityActivityStudyItem" FromRole="ActivityStudyItems" ToRole="Activities" />
+          <NavigationProperty Name="ActivityStudyItemIndividuals" Relationship="Self.FK_ActivityStudyItemActivityStudyItemIndividual" FromRole="ActivityStudyItems" ToRole="ActivityStudyItemIndividuals" />
+          <NavigationProperty Name="StudyItem" Relationship="Self.FK_StudyItemActivityStudyItem" FromRole="ActivityStudyItems" ToRole="StudyItems" />
+        </EntityType>
+        <EntityType Name="ApplicationConfiguration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ApplicationHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ActionTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ApplicationGUID" Type="Guid" />
+          <Property Name="IsRestored" Type="Boolean" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ClusterAuxiliaryBoardMember">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BoardMemberName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Order" Type="Int16" Nullable="false" />
+          <Property Name="ClusterId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedFrom" Type="Guid" />
+          <Property Name="ImportedFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cluster" Relationship="Self.FK_ClusterClusterAuxiliaryBoardMember" FromRole="ClusterAuxiliaryBoardMembers" ToRole="Clusters" />
+        </EntityType>
+        <EntityType Name="Cluster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LatinName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StageOfDevelopment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GeographicSize" Type="Int32" />
+          <Property Name="GeographicSizeUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TotalPopulation" Type="Int32" />
+          <Property Name="ChildrenClassCoordinators" Type="Int32" />
+          <Property Name="JuniorYouthGroupCoordinators" Type="Int32" />
+          <Property Name="StudyCircleCoordinators" Type="Int32" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegionId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ImportedFrom" Type="Guid" />
+          <Property Name="ImportedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="LegacyId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClusterAuxiliaryBoardMembers" Relationship="Self.FK_ClusterClusterAuxiliaryBoardMember" FromRole="Clusters" ToRole="ClusterAuxiliaryBoardMembers" />
+          <NavigationProperty Name="Cycles" Relationship="Self.FK_ClusterCycle" FromRole="Clusters" ToRole="Cycles" />
+          <NavigationProperty Name="Localities" Relationship="Self.FK_ClusterLocality" FromRole="Clusters" ToRole="Localities" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_RegionCluster" FromRole="Clusters" ToRole="Regions" />
+        </EntityType>
+        <EntityType Name="Cycle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayStartDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DisplayEndDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FriendsParticipatingInExpansionPhase" Type="Int32" />
+          <Property Name="CompletedBook1" Type="Int32" />
+          <Property Name="CompletedBook2" Type="Int32" />
+          <Property Name="CompletedBook3G1" Type="Int32" />
+          <Property Name="CompletedBook3G2" Type="Int32" />
+          <Property Name="CompletedBook3G3" Type="Int32" />
+          <Property Name="CompletedBook4" Type="Int32" />
+          <Property Name="CompletedBook5" Type="Int32" />
+          <Property Name="CompletedBook6" Type="Int32" />
+          <Property Name="CompletedBook7" Type="Int32" />
+          <Property Name="CompletedBook8" Type="Int32" />
+          <Property Name="CompletedBook9U1" Type="Int32" />
+          <Property Name="CompletedBook9U2" Type="Int32" />
+          <Property Name="CompletedBook11U1" Type="Int32" />
+          <Property Name="IsOverrideCompletedBookData" Type="Boolean" Nullable="false" />
+          <Property Name="DevotionalMeetingsNumber" Type="Int32" />
+          <Property Name="DevotionalMeetingsAttendance" Type="Int32" />
+          <Property Name="DevotionalMeetingsFriendsOfFaith" Type="Int32" />
+          <Property Name="IsOverrideDevotionalMeetingsData" Type="Boolean" Nullable="false" />
+          <Property Name="ChildrenClassesNumber" Type="Int32" />
+          <Property Name="ChildrenClassesAttendance" Type="Int32" />
+          <Property Name="ChildrenClassesFriendsOfFaith" Type="Int32" />
+          <Property Name="IsOverrideChildrenClassesDate" Type="Boolean" Nullable="false" />
+          <Property Name="JuniorYouthGroupsNumber" Type="Int32" />
+          <Property Name="JuniorYouthGroupsAttendance" Type="Int32" />
+          <Property Name="JuniorYouthGroupsFriendsOfFaith" Type="Int32" />
+          <Property Name="IsOverrideJuniorYouthGroupsData" Type="Boolean" Nullable="false" />
+          <Property Name="StudyCirclesNumber" Type="Int32" />
+          <Property Name="StudyCirclesAttendance" Type="Int32" />
+          <Property Name="StudyCirclesFriendsOfFaith" Type="Int32" />
+          <Property Name="IsOverrideStudyCirclesData" Type="Boolean" Nullable="false" />
+          <Property Name="ChildrenAndJuniorYouthRegisteredDuringCycle" Type="Int32" />
+          <Property Name="YouthAndAdultsEnrolledDuringCycle" Type="Int32" />
+          <Property Name="NewlyEnrolledBelieversInInstituteProcess" Type="Int32" />
+          <Property Name="IsOverrideExpansionDuringCycleData" Type="Boolean" Nullable="false" />
+          <Property Name="BahaiChildren" Type="Int32" />
+          <Property Name="BahaiJuniorYouth" Type="Int32" />
+          <Property Name="BahaiYouth" Type="Int32" />
+          <Property Name="BahaiAdultMen" Type="Int32" />
+          <Property Name="BahaiAdultWomen" Type="Int32" />
+          <Property Name="TotalBahaiBelievers" Type="Int32" />
+          <Property Name="IsOverrideBahaiPopulationData" Type="Boolean" Nullable="false" />
+          <Property Name="HomesVisitedForDeepening" Type="Int32" />
+          <Property Name="LocalitiesInNineteenDayFeastHeld" Type="Int32" />
+          <Property Name="NineteenDayFeastAttendanceEstimated" Type="Int32" />
+          <Property Name="LocalitiesObservedOneOrMoreHolyDays" Type="Int32" />
+          <Property Name="HolyDayAttendanceEstimated" Type="Int32" />
+          <Property Name="IsOverrideCommunityDevelopmentData" Type="Boolean" Nullable="false" />
+          <Property Name="ClusterId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedFrom" Type="Guid" />
+          <Property Name="ImportedFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsCycleDateChanged" Type="Boolean" Nullable="false" />
+          <Property Name="IsLocalityDataChanged" Type="Boolean" Nullable="false" />
+          <Property Name="IsRecalculated" Type="Boolean" Nullable="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="LegacyId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompletedBook10" Type="Int32" />
+          <NavigationProperty Name="Cluster" Relationship="Self.FK_ClusterCycle" FromRole="Cycles" ToRole="Clusters" />
+        </EntityType>
+        <EntityType Name="DBScriptHistory">
+          <Key>
+            <PropertyRef Name="ScriptName" />
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScriptName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="IndividualEmail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Order" Type="Int16" Nullable="false" />
+          <Property Name="IndividualId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedFrom" Type="Guid" />
+          <Property Name="ImportedFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Individual" Relationship="Self.FK_IndividualIndividualEmail" FromRole="IndividualEmails" ToRole="Individuals" />
+        </EntityType>
+        <EntityType Name="IndividualPhone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Order" Type="Int16" Nullable="false" />
+          <Property Name="IndividualId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedFrom" Type="Guid" />
+          <Property Name="ImportedFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Individual" Relationship="Self.FK_IndividualIndividualPhone" FromRole="IndividualPhones" ToRole="Individuals" />
+        </EntityType>
+        <EntityType Name="Individual">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FamilyName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Byte" />
+          <Property Name="EstimatedYearOfBirthDate" Type="Int16" />
+          <Property Name="IsSelectedEstimatedYearOfBirthDate" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayBirthDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsRegisteredBahai" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayRegistrationDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+          <Property Name="UnRegisteredTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsArchived" Type="Boolean" Nullable="false" />
+          <Property Name="IsNonDuplicate" Type="Boolean" />
+          <Property Name="LegacyDataHadCurrentlyAttendingChildrensClass" Type="Boolean" Nullable="false" />
+          <Property Name="LegacyDataHadCurrentlyParticipatingInAJuniorYouthGroup" Type="Boolean" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LocalityId" Type="Int64" Nullable="false" />
+          <Property Name="SubdivisionId" Type="Int64" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ArchivedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedFrom" Type="Guid" />
+          <Property Name="ImportedFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="LegacyId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WasLegacyRecord" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ActivityStudyItemIndividuals" Relationship="Self.FK_IndividualActivityStudyItemIndividual" FromRole="Individuals" ToRole="ActivityStudyItemIndividuals" />
+          <NavigationProperty Name="IndividualEmails" Relationship="Self.FK_IndividualIndividualEmail" FromRole="Individuals" ToRole="IndividualEmails" />
+          <NavigationProperty Name="IndividualPhones" Relationship="Self.FK_IndividualIndividualPhone" FromRole="Individuals" ToRole="IndividualPhones" />
+          <NavigationProperty Name="Locality" Relationship="Self.FK_LocalityIndividual" FromRole="Individuals" ToRole="Localities" />
+          <NavigationProperty Name="Subdivision" Relationship="Self.FK_SubdivisionIndividual" FromRole="Individuals" ToRole="Subdivisions" />
+        </EntityType>
+        <EntityType Name="ListColumn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="EntityType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TableName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ColumnName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SortColumnName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FilterColumnName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsCalculated" Type="Boolean" Nullable="false" />
+          <Property Name="Expression" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsAvailableListColumn" Type="Boolean" Nullable="false" />
+          <Property Name="IsRequiredListColumn" Type="Boolean" Nullable="false" />
+          <Property Name="IsSelectableListColumn" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrderableListColumn" Type="Boolean" Nullable="false" />
+          <Property Name="IsFilterableListColumn" Type="Boolean" Nullable="false" />
+          <Property Name="IsAvailableReportColumn" Type="Boolean" Nullable="false" />
+          <Property Name="IsRequiredReportColumn" Type="Boolean" Nullable="false" />
+          <Property Name="IsSelectableReportColumn" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrderableReportColumn" Type="Boolean" Nullable="false" />
+          <Property Name="IsFilterableReportColumn" Type="Boolean" Nullable="false" />
+          <Property Name="ColumnType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Order" Type="Int16" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsAvailableExportColumn" Type="Boolean" Nullable="false" />
+          <Property Name="ListColumnGroupId" Type="Int64" />
+          <Property Name="ColumnCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DBSortColumnName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DBFilterColumnName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ListDisplayColumns" Relationship="Self.FK_ListColumnListDisplayColumn" FromRole="ListColumns" ToRole="ListDisplayColumns" />
+          <NavigationProperty Name="ListFilterColumns" Relationship="Self.FK_ListColumnListFilterColumn" FromRole="ListColumns" ToRole="ListFilterColumns" />
+          <NavigationProperty Name="ListSortColumns" Relationship="Self.FK_ListColumnListSortColumn" FromRole="ListColumns" ToRole="ListSortColumns" />
+        </EntityType>
+        <EntityType Name="ListDisplayColumn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order" Type="Int16" Nullable="false" />
+          <Property Name="ListId" Type="Int64" Nullable="false" />
+          <Property Name="ListColumnId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ListColumn" Relationship="Self.FK_ListColumnListDisplayColumn" FromRole="ListDisplayColumns" ToRole="ListColumns" />
+          <NavigationProperty Name="List" Relationship="Self.FK_ListListDisplayColumn" FromRole="ListDisplayColumns" ToRole="Lists" />
+        </EntityType>
+        <EntityType Name="ListFilterColumn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="Operator" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Order" Type="Int16" Nullable="false" />
+          <Property Name="ListId" Type="Int64" Nullable="false" />
+          <Property Name="ListColumnId" Type="Int64" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ListColumn" Relationship="Self.FK_ListColumnListFilterColumn" FromRole="ListFilterColumns" ToRole="ListColumns" />
+          <NavigationProperty Name="ListFilterColumns1" Relationship="Self.FK_ListFilterColumnListFilterColumn" FromRole="ListFilterColumns" ToRole="ListFilterColumns1" />
+          <NavigationProperty Name="ListFilterColumn1" Relationship="Self.FK_ListFilterColumnListFilterColumn" FromRole="ListFilterColumns1" ToRole="ListFilterColumns" />
+          <NavigationProperty Name="List" Relationship="Self.FK_ListListFilterColumn" FromRole="ListFilterColumns" ToRole="Lists" />
+        </EntityType>
+        <EntityType Name="List">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ListType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ListSubType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EntityType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ListKey" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ListGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QueryPattern" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MainTable" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsPredefined" Type="Boolean" Nullable="false" />
+          <Property Name="Order" Type="Int16" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="ReferenceId" Type="Int64" />
+          <Property Name="HasQuickFilter" Type="Boolean" Nullable="false" />
+          <Property Name="HasListDetails" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ExportListId" Type="Int64" />
+          <Property Name="IsIncludeSummaryRow" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ListDisplayColumns" Relationship="Self.FK_ListListDisplayColumn" FromRole="Lists" ToRole="ListDisplayColumns" />
+          <NavigationProperty Name="ListFilterColumns" Relationship="Self.FK_ListListFilterColumn" FromRole="Lists" ToRole="ListFilterColumns" />
+          <NavigationProperty Name="ListSortColumns" Relationship="Self.FK_ListListSortColumn" FromRole="Lists" ToRole="ListSortColumns" />
+        </EntityType>
+        <EntityType Name="ListSortColumn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SortDirection" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Order" Type="Int16" Nullable="false" />
+          <Property Name="ListId" Type="Int64" Nullable="false" />
+          <Property Name="ListColumnId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ListColumn" Relationship="Self.FK_ListColumnListSortColumn" FromRole="ListSortColumns" ToRole="ListColumns" />
+          <NavigationProperty Name="List" Relationship="Self.FK_ListListSortColumn" FromRole="ListSortColumns" ToRole="Lists" />
+        </EntityType>
+        <EntityType Name="LoadDataFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LoadedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LoadedItem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SourceApplicationGUID" Type="Guid" />
+          <Property Name="SourceApplicationVersion" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LoadedToLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Locality">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LatinName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HasLocalSpiritualAssembly" Type="Boolean" />
+          <Property Name="HasLocalFund" Type="Boolean" />
+          <Property Name="IsObservesNineteenDayFeast" Type="Boolean" />
+          <Property Name="NineteenDayFeastAttendance" Type="Int32" />
+          <Property Name="IsObservesHolyDays" Type="Boolean" />
+          <Property Name="HolyDayAttendance" Type="Int32" />
+          <Property Name="HasDevotionalMeetings" Type="Boolean" />
+          <Property Name="DevotionalMeetings" Type="Int32" />
+          <Property Name="DevotionalMeetingAttendance" Type="Int32" />
+          <Property Name="DevotionalMeetingFriendAttendance" Type="Int32" />
+          <Property Name="IsConductsHomeVisits" Type="Boolean" />
+          <Property Name="HomesVisited" Type="Int32" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClusterId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedFrom" Type="Guid" />
+          <Property Name="ImportedFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="LegacyId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Activities" Relationship="Self.FK_LocalityActivity" FromRole="Localities" ToRole="Activities" />
+          <NavigationProperty Name="Cluster" Relationship="Self.FK_ClusterLocality" FromRole="Localities" ToRole="Clusters" />
+          <NavigationProperty Name="Individuals" Relationship="Self.FK_LocalityIndividual" FromRole="Localities" ToRole="Individuals" />
+          <NavigationProperty Name="Subdivisions" Relationship="Self.FK_LocalitySubdivision" FromRole="Localities" ToRole="Subdivisions" />
+        </EntityType>
+        <EntityType Name="LocalizedStudyItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Abbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StudyItemTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StudyItemId" Type="Int64" Nullable="false" />
+          <Property Name="Language" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="StudyItem" Relationship="Self.FK_StudyItemLocalizedStudyItem" FromRole="LocalizedStudyItems" ToRole="StudyItems" />
+        </EntityType>
+        <EntityType Name="NationalCommunity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LatinName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedFrom" Type="Guid" />
+          <Property Name="ImportedFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="LegacyId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsAnonymized" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Regions" Relationship="Self.FK_NationalCommunityRegion" FromRole="NationalCommunities" ToRole="Regions" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LatinName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HasBahaiCouncil" Type="Boolean" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NationalCommunityId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ImportedFrom" Type="Guid" />
+          <Property Name="ImportedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="LegacyId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clusters" Relationship="Self.FK_RegionCluster" FromRole="Regions" ToRole="Clusters" />
+          <NavigationProperty Name="NationalCommunity" Relationship="Self.FK_NationalCommunityRegion" FromRole="Regions" ToRole="NationalCommunities" />
+        </EntityType>
+        <EntityType Name="StudyItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="ActivityType" Type="Byte" Nullable="false" />
+          <Property Name="ActivityStudyItemType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ActivityStudyItemIndividuals" Relationship="Self.FK_StudyItemActivityStudyItemIndividual" FromRole="StudyItems" ToRole="ActivityStudyItemIndividuals" />
+          <NavigationProperty Name="ActivityStudyItems" Relationship="Self.FK_StudyItemActivityStudyItem" FromRole="StudyItems" ToRole="ActivityStudyItems" />
+          <NavigationProperty Name="LocalizedStudyItems" Relationship="Self.FK_StudyItemLocalizedStudyItem" FromRole="StudyItems" ToRole="LocalizedStudyItems" />
+        </EntityType>
+        <EntityType Name="Subdivision">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LatinName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LocalityId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ImportedTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="ImportedFrom" Type="Guid" />
+          <Property Name="ImportedFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="LegacyId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Activities" Relationship="Self.FK_SubdivisionActivity" FromRole="Subdivisions" ToRole="Activities" />
+          <NavigationProperty Name="Individuals" Relationship="Self.FK_SubdivisionIndividual" FromRole="Subdivisions" ToRole="Individuals" />
+          <NavigationProperty Name="Locality" Relationship="Self.FK_LocalitySubdivision" FromRole="Subdivisions" ToRole="Localities" />
+        </EntityType>
+        <Association Name="FK_ActivityActivityStudyItem">
+          <End Role="Activities" Type="Self.Activity" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ActivityStudyItems" Type="Self.ActivityStudyItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityStudyItems">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityActivityStudyItemIndividual">
+          <End Role="Activities" Type="Self.Activity" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ActivityStudyItemIndividuals" Type="Self.ActivityStudyItemIndividual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityStudyItemIndividuals">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalityActivity">
+          <End Role="Localities" Type="Self.Locality" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Activities" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="LocalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubdivisionActivity">
+          <End Role="Subdivisions" Type="Self.Subdivision" Multiplicity="0..1" />
+          <End Role="Activities" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subdivisions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="SubdivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityStudyItemActivityStudyItemIndividual">
+          <End Role="ActivityStudyItems" Type="Self.ActivityStudyItem" Multiplicity="0..1" />
+          <End Role="ActivityStudyItemIndividuals" Type="Self.ActivityStudyItemIndividual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityStudyItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityStudyItemIndividuals">
+              <PropertyRef Name="ActivityStudyItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IndividualActivityStudyItemIndividual">
+          <End Role="Individuals" Type="Self.Individual" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ActivityStudyItemIndividuals" Type="Self.ActivityStudyItemIndividual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Individuals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityStudyItemIndividuals">
+              <PropertyRef Name="IndividualId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyItemActivityStudyItemIndividual">
+          <End Role="StudyItems" Type="Self.StudyItem" Multiplicity="0..1" />
+          <End Role="ActivityStudyItemIndividuals" Type="Self.ActivityStudyItemIndividual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudyItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityStudyItemIndividuals">
+              <PropertyRef Name="StudyItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyItemActivityStudyItem">
+          <End Role="StudyItems" Type="Self.StudyItem" Multiplicity="1" />
+          <End Role="ActivityStudyItems" Type="Self.ActivityStudyItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudyItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActivityStudyItems">
+              <PropertyRef Name="StudyItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClusterClusterAuxiliaryBoardMember">
+          <End Role="Clusters" Type="Self.Cluster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClusterAuxiliaryBoardMembers" Type="Self.ClusterAuxiliaryBoardMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clusters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClusterAuxiliaryBoardMembers">
+              <PropertyRef Name="ClusterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClusterCycle">
+          <End Role="Clusters" Type="Self.Cluster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cycles" Type="Self.Cycle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clusters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cycles">
+              <PropertyRef Name="ClusterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClusterLocality">
+          <End Role="Clusters" Type="Self.Cluster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Localities" Type="Self.Locality" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clusters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Localities">
+              <PropertyRef Name="ClusterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegionCluster">
+          <End Role="Regions" Type="Self.Region" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Clusters" Type="Self.Cluster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clusters">
+              <PropertyRef Name="RegionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IndividualIndividualEmail">
+          <End Role="Individuals" Type="Self.Individual" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="IndividualEmails" Type="Self.IndividualEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Individuals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IndividualEmails">
+              <PropertyRef Name="IndividualId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IndividualIndividualPhone">
+          <End Role="Individuals" Type="Self.Individual" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="IndividualPhones" Type="Self.IndividualPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Individuals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IndividualPhones">
+              <PropertyRef Name="IndividualId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalityIndividual">
+          <End Role="Localities" Type="Self.Locality" Multiplicity="1" />
+          <End Role="Individuals" Type="Self.Individual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Individuals">
+              <PropertyRef Name="LocalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubdivisionIndividual">
+          <End Role="Subdivisions" Type="Self.Subdivision" Multiplicity="0..1" />
+          <End Role="Individuals" Type="Self.Individual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subdivisions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Individuals">
+              <PropertyRef Name="SubdivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListColumnListDisplayColumn">
+          <End Role="ListColumns" Type="Self.ListColumn" Multiplicity="1" />
+          <End Role="ListDisplayColumns" Type="Self.ListDisplayColumn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListColumns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListDisplayColumns">
+              <PropertyRef Name="ListColumnId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListColumnListFilterColumn">
+          <End Role="ListColumns" Type="Self.ListColumn" Multiplicity="0..1" />
+          <End Role="ListFilterColumns" Type="Self.ListFilterColumn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListColumns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListFilterColumns">
+              <PropertyRef Name="ListColumnId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListColumnListSortColumn">
+          <End Role="ListColumns" Type="Self.ListColumn" Multiplicity="1" />
+          <End Role="ListSortColumns" Type="Self.ListSortColumn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListColumns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListSortColumns">
+              <PropertyRef Name="ListColumnId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListListDisplayColumn">
+          <End Role="Lists" Type="Self.List" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ListDisplayColumns" Type="Self.ListDisplayColumn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListDisplayColumns">
+              <PropertyRef Name="ListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListFilterColumnListFilterColumn">
+          <End Role="ListFilterColumns" Type="Self.ListFilterColumn" Multiplicity="0..1" />
+          <End Role="ListFilterColumns1" Type="Self.ListFilterColumn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListFilterColumns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListFilterColumns1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListListFilterColumn">
+          <End Role="Lists" Type="Self.List" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ListFilterColumns" Type="Self.ListFilterColumn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListFilterColumns">
+              <PropertyRef Name="ListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListListSortColumn">
+          <End Role="Lists" Type="Self.List" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ListSortColumns" Type="Self.ListSortColumn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ListSortColumns">
+              <PropertyRef Name="ListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalitySubdivision">
+          <End Role="Localities" Type="Self.Locality" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Subdivisions" Type="Self.Subdivision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subdivisions">
+              <PropertyRef Name="LocalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyItemLocalizedStudyItem">
+          <End Role="StudyItems" Type="Self.StudyItem" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LocalizedStudyItems" Type="Self.LocalizedStudyItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudyItems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalizedStudyItems">
+              <PropertyRef Name="StudyItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NationalCommunityRegion">
+          <End Role="NationalCommunities" Type="Self.NationalCommunity" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Regions" Type="Self.Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NationalCommunities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Regions">
+              <PropertyRef Name="NationalCommunityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SRP3Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activities" EntityType="Self.Activity" />
+          <EntitySet Name="ActivityStudyItemIndividuals" EntityType="Self.ActivityStudyItemIndividual" />
+          <EntitySet Name="ActivityStudyItems" EntityType="Self.ActivityStudyItem" />
+          <EntitySet Name="ApplicationConfigurations" EntityType="Self.ApplicationConfiguration" />
+          <EntitySet Name="ApplicationHistories" EntityType="Self.ApplicationHistory" />
+          <EntitySet Name="ClusterAuxiliaryBoardMembers" EntityType="Self.ClusterAuxiliaryBoardMember" />
+          <EntitySet Name="Clusters" EntityType="Self.Cluster" />
+          <EntitySet Name="Cycles" EntityType="Self.Cycle" />
+          <EntitySet Name="DBScriptHistories" EntityType="Self.DBScriptHistory" />
+          <EntitySet Name="IndividualEmails" EntityType="Self.IndividualEmail" />
+          <EntitySet Name="IndividualPhones" EntityType="Self.IndividualPhone" />
+          <EntitySet Name="Individuals" EntityType="Self.Individual" />
+          <EntitySet Name="ListColumns" EntityType="Self.ListColumn" />
+          <EntitySet Name="ListDisplayColumns" EntityType="Self.ListDisplayColumn" />
+          <EntitySet Name="ListFilterColumns" EntityType="Self.ListFilterColumn" />
+          <EntitySet Name="Lists" EntityType="Self.List" />
+          <EntitySet Name="ListSortColumns" EntityType="Self.ListSortColumn" />
+          <EntitySet Name="LoadDataFiles" EntityType="Self.LoadDataFile" />
+          <EntitySet Name="Localities" EntityType="Self.Locality" />
+          <EntitySet Name="LocalizedStudyItems" EntityType="Self.LocalizedStudyItem" />
+          <EntitySet Name="NationalCommunities" EntityType="Self.NationalCommunity" />
+          <EntitySet Name="Regions" EntityType="Self.Region" />
+          <EntitySet Name="StudyItems" EntityType="Self.StudyItem" />
+          <EntitySet Name="Subdivisions" EntityType="Self.Subdivision" />
+          <AssociationSet Name="FK_ActivityActivityStudyItem" Association="Self.FK_ActivityActivityStudyItem">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="ActivityStudyItems" EntitySet="ActivityStudyItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityActivityStudyItemIndividual" Association="Self.FK_ActivityActivityStudyItemIndividual">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="ActivityStudyItemIndividuals" EntitySet="ActivityStudyItemIndividuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalityActivity" Association="Self.FK_LocalityActivity">
+            <End Role="Localities" EntitySet="Localities" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubdivisionActivity" Association="Self.FK_SubdivisionActivity">
+            <End Role="Subdivisions" EntitySet="Subdivisions" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityStudyItemActivityStudyItemIndividual" Association="Self.FK_ActivityStudyItemActivityStudyItemIndividual">
+            <End Role="ActivityStudyItems" EntitySet="ActivityStudyItems" />
+            <End Role="ActivityStudyItemIndividuals" EntitySet="ActivityStudyItemIndividuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IndividualActivityStudyItemIndividual" Association="Self.FK_IndividualActivityStudyItemIndividual">
+            <End Role="Individuals" EntitySet="Individuals" />
+            <End Role="ActivityStudyItemIndividuals" EntitySet="ActivityStudyItemIndividuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyItemActivityStudyItemIndividual" Association="Self.FK_StudyItemActivityStudyItemIndividual">
+            <End Role="StudyItems" EntitySet="StudyItems" />
+            <End Role="ActivityStudyItemIndividuals" EntitySet="ActivityStudyItemIndividuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyItemActivityStudyItem" Association="Self.FK_StudyItemActivityStudyItem">
+            <End Role="StudyItems" EntitySet="StudyItems" />
+            <End Role="ActivityStudyItems" EntitySet="ActivityStudyItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClusterClusterAuxiliaryBoardMember" Association="Self.FK_ClusterClusterAuxiliaryBoardMember">
+            <End Role="Clusters" EntitySet="Clusters" />
+            <End Role="ClusterAuxiliaryBoardMembers" EntitySet="ClusterAuxiliaryBoardMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClusterCycle" Association="Self.FK_ClusterCycle">
+            <End Role="Clusters" EntitySet="Clusters" />
+            <End Role="Cycles" EntitySet="Cycles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClusterLocality" Association="Self.FK_ClusterLocality">
+            <End Role="Clusters" EntitySet="Clusters" />
+            <End Role="Localities" EntitySet="Localities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegionCluster" Association="Self.FK_RegionCluster">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="Clusters" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IndividualIndividualEmail" Association="Self.FK_IndividualIndividualEmail">
+            <End Role="Individuals" EntitySet="Individuals" />
+            <End Role="IndividualEmails" EntitySet="IndividualEmails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IndividualIndividualPhone" Association="Self.FK_IndividualIndividualPhone">
+            <End Role="Individuals" EntitySet="Individuals" />
+            <End Role="IndividualPhones" EntitySet="IndividualPhones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalityIndividual" Association="Self.FK_LocalityIndividual">
+            <End Role="Localities" EntitySet="Localities" />
+            <End Role="Individuals" EntitySet="Individuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubdivisionIndividual" Association="Self.FK_SubdivisionIndividual">
+            <End Role="Subdivisions" EntitySet="Subdivisions" />
+            <End Role="Individuals" EntitySet="Individuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListColumnListDisplayColumn" Association="Self.FK_ListColumnListDisplayColumn">
+            <End Role="ListColumns" EntitySet="ListColumns" />
+            <End Role="ListDisplayColumns" EntitySet="ListDisplayColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListColumnListFilterColumn" Association="Self.FK_ListColumnListFilterColumn">
+            <End Role="ListColumns" EntitySet="ListColumns" />
+            <End Role="ListFilterColumns" EntitySet="ListFilterColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListColumnListSortColumn" Association="Self.FK_ListColumnListSortColumn">
+            <End Role="ListColumns" EntitySet="ListColumns" />
+            <End Role="ListSortColumns" EntitySet="ListSortColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListListDisplayColumn" Association="Self.FK_ListListDisplayColumn">
+            <End Role="Lists" EntitySet="Lists" />
+            <End Role="ListDisplayColumns" EntitySet="ListDisplayColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListFilterColumnListFilterColumn" Association="Self.FK_ListFilterColumnListFilterColumn">
+            <End Role="ListFilterColumns" EntitySet="ListFilterColumns" />
+            <End Role="ListFilterColumns1" EntitySet="ListFilterColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListListFilterColumn" Association="Self.FK_ListListFilterColumn">
+            <End Role="Lists" EntitySet="Lists" />
+            <End Role="ListFilterColumns" EntitySet="ListFilterColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListListSortColumn" Association="Self.FK_ListListSortColumn">
+            <End Role="Lists" EntitySet="Lists" />
+            <End Role="ListSortColumns" EntitySet="ListSortColumns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalitySubdivision" Association="Self.FK_LocalitySubdivision">
+            <End Role="Localities" EntitySet="Localities" />
+            <End Role="Subdivisions" EntitySet="Subdivisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyItemLocalizedStudyItem" Association="Self.FK_StudyItemLocalizedStudyItem">
+            <End Role="StudyItems" EntitySet="StudyItems" />
+            <End Role="LocalizedStudyItems" EntitySet="LocalizedStudyItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NationalCommunityRegion" Association="Self.FK_NationalCommunityRegion">
+            <End Role="NationalCommunities" EntitySet="NationalCommunities" />
+            <End Role="Regions" EntitySet="Regions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SRP3ModelStoreContainer" CdmEntityContainer="SRP3Entities">
+          <EntitySetMapping Name="Activities">
+            <EntityTypeMapping TypeName="SRP3Model.Activity">
+              <MappingFragment StoreEntitySet="Activities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ActivityType" ColumnName="ActivityType" />
+                <ScalarProperty Name="DisplayStartDate" ColumnName="DisplayStartDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="DisplayEndDate" ColumnName="DisplayEndDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="HasServiceProjects" ColumnName="HasServiceProjects" />
+                <ScalarProperty Name="Participants" ColumnName="Participants" />
+                <ScalarProperty Name="BahaiParticipants" ColumnName="BahaiParticipants" />
+                <ScalarProperty Name="LocalityId" ColumnName="LocalityId" />
+                <ScalarProperty Name="SubdivisionId" ColumnName="SubdivisionId" />
+                <ScalarProperty Name="IsOverrideParticipantCounts" ColumnName="IsOverrideParticipantCounts" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ImportedTimestamp" ColumnName="ImportedTimestamp" />
+                <ScalarProperty Name="ImportedFrom" ColumnName="ImportedFrom" />
+                <ScalarProperty Name="ImportedFileType" ColumnName="ImportedFileType" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="LegacyId" ColumnName="LegacyId" />
+                <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityStudyItemIndividuals">
+            <EntityTypeMapping TypeName="SRP3Model.ActivityStudyItemIndividual">
+              <MappingFragment StoreEntitySet="ActivityStudyItemIndividuals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IndividualType" ColumnName="IndividualType" />
+                <ScalarProperty Name="IndividualRole" ColumnName="IndividualRole" />
+                <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="DisplayEndDate" ColumnName="DisplayEndDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="StudyItemId" ColumnName="StudyItemId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ImportedTimestamp" ColumnName="ImportedTimestamp" />
+                <ScalarProperty Name="ImportedFrom" ColumnName="ImportedFrom" />
+                <ScalarProperty Name="ImportedFileType" ColumnName="ImportedFileType" />
+                <ScalarProperty Name="ActivityStudyItemId" ColumnName="ActivityStudyItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityStudyItems">
+            <EntityTypeMapping TypeName="SRP3Model.ActivityStudyItem">
+              <MappingFragment StoreEntitySet="ActivityStudyItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DisplayStartDate" ColumnName="DisplayStartDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="DisplayEndDate" ColumnName="DisplayEndDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="StudyItemId" ColumnName="StudyItemId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ImportedTimestamp" ColumnName="ImportedTimestamp" />
+                <ScalarProperty Name="ImportedFrom" ColumnName="ImportedFrom" />
+                <ScalarProperty Name="ImportedFileType" ColumnName="ImportedFileType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationConfigurations">
+            <EntityTypeMapping TypeName="SRP3Model.ApplicationConfiguration">
+              <MappingFragment StoreEntitySet="ApplicationConfigurations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationHistories">
+            <EntityTypeMapping TypeName="SRP3Model.ApplicationHistory">
+              <MappingFragment StoreEntitySet="ApplicationHistories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ApplicationVersion" ColumnName="ApplicationVersion" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ActionTimestamp" ColumnName="ActionTimestamp" />
+                <ScalarProperty Name="ApplicationGUID" ColumnName="ApplicationGUID" />
+                <ScalarProperty Name="IsRestored" ColumnName="IsRestored" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClusterAuxiliaryBoardMembers">
+            <EntityTypeMapping TypeName="SRP3Model.ClusterAuxiliaryBoardMember">
+              <MappingFragment StoreEntitySet="ClusterAuxiliaryBoardMembers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BoardMemberName" ColumnName="BoardMemberName" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="ClusterId" ColumnName="ClusterId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ImportedTimestamp" ColumnName="ImportedTimestamp" />
+                <ScalarProperty Name="ImportedFrom" ColumnName="ImportedFrom" />
+                <ScalarProperty Name="ImportedFileType" ColumnName="ImportedFileType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clusters">
+            <EntityTypeMapping TypeName="SRP3Model.Cluster">
+              <MappingFragment StoreEntitySet="Clusters">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LatinName" ColumnName="LatinName" />
+                <ScalarProperty Name="StageOfDevelopment" ColumnName="StageOfDevelopment" />
+                <ScalarProperty Name="GeographicSize" ColumnName="GeographicSize" />
+                <ScalarProperty Name="GeographicSizeUnit" ColumnName="GeographicSizeUnit" />
+                <ScalarProperty Name="TotalPopulation" ColumnName="TotalPopulation" />
+                <ScalarProperty Name="ChildrenClassCoordinators" ColumnName="ChildrenClassCoordinators" />
+                <ScalarProperty Name="JuniorYouthGroupCoordinators" ColumnName="JuniorYouthGroupCoordinators" />
+                <ScalarProperty Name="StudyCircleCoordinators" ColumnName="StudyCircleCoordinators" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ImportedFrom" ColumnName="ImportedFrom" />
+                <ScalarProperty Name="ImportedTimestamp" ColumnName="ImportedTimestamp" />
+                <ScalarProperty Name="ImportedFileType" ColumnName="ImportedFileType" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="LegacyId" ColumnName="LegacyId" />
+                <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cycles">
+            <EntityTypeMapping TypeName="SRP3Model.Cycle">
+              <MappingFragment StoreEntitySet="Cycles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DisplayStartDate" ColumnName="DisplayStartDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="DisplayEndDate" ColumnName="DisplayEndDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="FriendsParticipatingInExpansionPhase" ColumnName="FriendsParticipatingInExpansionPhase" />
+                <ScalarProperty Name="CompletedBook1" ColumnName="CompletedBook1" />
+                <ScalarProperty Name="CompletedBook2" ColumnName="CompletedBook2" />
+                <ScalarProperty Name="CompletedBook3G1" ColumnName="CompletedBook3G1" />
+                <ScalarProperty Name="CompletedBook3G2" ColumnName="CompletedBook3G2" />
+                <ScalarProperty Name="CompletedBook3G3" ColumnName="CompletedBook3G3" />
+                <ScalarProperty Name="CompletedBook4" ColumnName="CompletedBook4" />
+                <ScalarProperty Name="CompletedBook5" ColumnName="CompletedBook5" />
+                <ScalarProperty Name="CompletedBook6" ColumnName="CompletedBook6" />
+                <ScalarProperty Name="CompletedBook7" ColumnName="CompletedBook7" />
+                <ScalarProperty Name="CompletedBook8" ColumnName="CompletedBook8" />
+                <ScalarProperty Name="CompletedBook9U1" ColumnName="CompletedBook9U1" />
+                <ScalarProperty Name="CompletedBook9U2" ColumnName="CompletedBook9U2" />
+                <ScalarProperty Name="CompletedBook11U1" ColumnName="CompletedBook11U1" />
+                <ScalarProperty Name="IsOverrideCompletedBookData" ColumnName="IsOverrideCompletedBookData" />
+                <ScalarProperty Name="DevotionalMeetingsNumber" ColumnName="DevotionalMeetingsNumber" />
+                <ScalarProperty Name="DevotionalMeetingsAttendance" ColumnName="DevotionalMeetingsAttendance" />
+                <ScalarProperty Name="DevotionalMeetingsFriendsOfFaith" ColumnName="DevotionalMeetingsFriendsOfFaith" />
+                <ScalarProperty Name="IsOverrideDevotionalMeetingsData" ColumnName="IsOverrideDevotionalMeetingsData" />
+                <ScalarProperty Name="ChildrenClassesNumber" ColumnName="ChildrenClassesNumber" />
+                <ScalarProperty Name="ChildrenClassesAttendance" ColumnName="ChildrenClassesAttendance" />
+                <ScalarProperty Name="ChildrenClassesFriendsOfFaith" ColumnName="ChildrenClassesFriendsOfFaith" />
+                <ScalarProperty Name="IsOverrideChildrenClassesDate" ColumnName="IsOverrideChildrenClassesDate" />
+                <ScalarProperty Name="JuniorYouthGroupsNumber" ColumnName="JuniorYouthGroupsNumber" />
+                <ScalarProperty Name="JuniorYouthGroupsAttendance" ColumnName="JuniorYouthGroupsAttendance" />
+                <ScalarProperty Name="JuniorYouthGroupsFriendsOfFaith" ColumnName="JuniorYouthGroupsFriendsOfFaith" />
+                <ScalarProperty Name="IsOverrideJuniorYouthGroupsData" ColumnName="IsOverrideJuniorYouthGroupsData" />
+                <ScalarProperty Name="StudyCirclesNumber" ColumnName="StudyCirclesNumber" />
+                <ScalarProperty Name="StudyCirclesAttendance" ColumnName="StudyCirclesAttendance" />
+                <ScalarProperty Name="StudyCirclesFriendsOfFaith" ColumnName="StudyCirclesFriendsOfFaith" />
+                <ScalarProperty Name="IsOverrideStudyCirclesData" ColumnName="IsOverrideStudyCirclesData" />
+                <ScalarProperty Name="ChildrenAndJuniorYouthRegisteredDuringCycle" ColumnName="ChildrenAndJuniorYouthRegisteredDuringCycle" />
+                <ScalarProperty Name="YouthAndAdultsEnrolledDuringCycle" ColumnName="YouthAndAdultsEnrolledDuringCycle" />
+                <ScalarProperty Name="NewlyEnrolledBelieversInInstituteProcess" ColumnName="NewlyEnrolledBelieversInInstituteProcess" />
+                <ScalarProperty Name="IsOverrideExpansionDuringCycleData" ColumnName="IsOverrideExpansionDuringCycleData" />
+                <ScalarProperty Name="BahaiChildren" ColumnName="BahaiChildren" />
+                <ScalarProperty Name="BahaiJuniorYouth" ColumnName="BahaiJuniorYouth" />
+                <ScalarProperty Name="BahaiYouth" ColumnName="BahaiYouth" />
+                <ScalarProperty Name="BahaiAdultMen" ColumnName="BahaiAdultMen" />
+                <ScalarProperty Name="BahaiAdultWomen" ColumnName="BahaiAdultWomen" />
+                <ScalarProperty Name="TotalBahaiBelievers" ColumnName="TotalBahaiBelievers" />
+                <ScalarProperty Name="IsOverrideBahaiPopulationData" ColumnName="IsOverrideBahaiPopulationData" />
+                <ScalarProperty Name="HomesVisitedForDeepening" ColumnName="HomesVisitedForDeepening" />
+                <ScalarProperty Name="LocalitiesInNineteenDayFeastHeld" ColumnName="LocalitiesInNineteenDayFeastHeld" />
+                <ScalarProperty Name="NineteenDayFeastAttendanceEstimated" ColumnName="NineteenDayFeastAttendanceEstimated" />
+                <ScalarProperty Name="LocalitiesObservedOneOrMoreHolyDays" ColumnName="LocalitiesObservedOneOrMoreHolyDays" />
+                <ScalarProperty Name="HolyDayAttendanceEstimated" ColumnName="HolyDayAttendanceEstimated" />
+                <ScalarProperty Name="IsOverrideCommunityDevelopmentData" ColumnName="IsOverrideCommunityDevelopmentData" />
+                <ScalarProperty Name="ClusterId" ColumnName="ClusterId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ImportedTimestamp" ColumnName="ImportedTimestamp" />
+                <ScalarProperty Name="ImportedFrom" ColumnName="ImportedFrom" />
+                <ScalarProperty Name="ImportedFileType" ColumnName="ImportedFileType" />
+                <ScalarProperty Name="IsCycleDateChanged" ColumnName="IsCycleDateChanged" />
+                <ScalarProperty Name="IsLocalityDataChanged" ColumnName="IsLocalityDataChanged" />
+                <ScalarProperty Name="IsRecalculated" ColumnName="IsRecalculated" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="LegacyId" ColumnName="LegacyId" />
+                <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CompletedBook10" ColumnName="CompletedBook10" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DBScriptHistories">
+            <EntityTypeMapping TypeName="SRP3Model.DBScriptHistory">
+              <MappingFragment StoreEntitySet="DBScriptHistories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ScriptName" ColumnName="ScriptName" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IndividualEmails">
+            <EntityTypeMapping TypeName="SRP3Model.IndividualEmail">
+              <MappingFragment StoreEntitySet="IndividualEmails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ImportedTimestamp" ColumnName="ImportedTimestamp" />
+                <ScalarProperty Name="ImportedFrom" ColumnName="ImportedFrom" />
+                <ScalarProperty Name="ImportedFileType" ColumnName="ImportedFileType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IndividualPhones">
+            <EntityTypeMapping TypeName="SRP3Model.IndividualPhone">
+              <MappingFragment StoreEntitySet="IndividualPhones">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ImportedTimestamp" ColumnName="ImportedTimestamp" />
+                <ScalarProperty Name="ImportedFrom" ColumnName="ImportedFrom" />
+                <ScalarProperty Name="ImportedFileType" ColumnName="ImportedFileType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Individuals">
+            <EntityTypeMapping TypeName="SRP3Model.Individual">
+              <MappingFragment StoreEntitySet="Individuals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="EstimatedYearOfBirthDate" ColumnName="EstimatedYearOfBirthDate" />
+                <ScalarProperty Name="IsSelectedEstimatedYearOfBirthDate" ColumnName="IsSelectedEstimatedYearOfBirthDate" />
+                <ScalarProperty Name="DisplayBirthDate" ColumnName="DisplayBirthDate" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="IsRegisteredBahai" ColumnName="IsRegisteredBahai" />
+                <ScalarProperty Name="DisplayRegistrationDate" ColumnName="DisplayRegistrationDate" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="UnRegisteredTimestamp" ColumnName="UnRegisteredTimestamp" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+                <ScalarProperty Name="IsNonDuplicate" ColumnName="IsNonDuplicate" />
+                <ScalarProperty Name="LegacyDataHadCurrentlyAttendingChildrensClass" ColumnName="LegacyDataHadCurrentlyAttendingChildrensClass" />
+                <ScalarProperty Name="LegacyDataHadCurrentlyParticipatingInAJuniorYouthGroup" ColumnName="LegacyDataHadCurrentlyParticipatingInAJuniorYouthGroup" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="LocalityId" ColumnName="LocalityId" />
+                <ScalarProperty Name="SubdivisionId" ColumnName="SubdivisionId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ArchivedTimestamp" ColumnName="ArchivedTimestamp" />
+                <ScalarProperty Name="ImportedTimestamp" ColumnName="ImportedTimestamp" />
+                <ScalarProperty Name="ImportedFrom" ColumnName="ImportedFrom" />
+                <ScalarProperty Name="ImportedFileType" ColumnName="ImportedFileType" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="LegacyId" ColumnName="LegacyId" />
+                <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+                <ScalarProperty Name="WasLegacyRecord" ColumnName="WasLegacyRecord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListColumns">
+            <EntityTypeMapping TypeName="SRP3Model.ListColumn">
+              <MappingFragment StoreEntitySet="ListColumns">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EntityType" ColumnName="EntityType" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+                <ScalarProperty Name="SortColumnName" ColumnName="SortColumnName" />
+                <ScalarProperty Name="FilterColumnName" ColumnName="FilterColumnName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="IsCalculated" ColumnName="IsCalculated" />
+                <ScalarProperty Name="Expression" ColumnName="Expression" />
+                <ScalarProperty Name="IsAvailableListColumn" ColumnName="IsAvailableListColumn" />
+                <ScalarProperty Name="IsRequiredListColumn" ColumnName="IsRequiredListColumn" />
+                <ScalarProperty Name="IsSelectableListColumn" ColumnName="IsSelectableListColumn" />
+                <ScalarProperty Name="IsOrderableListColumn" ColumnName="IsOrderableListColumn" />
+                <ScalarProperty Name="IsFilterableListColumn" ColumnName="IsFilterableListColumn" />
+                <ScalarProperty Name="IsAvailableReportColumn" ColumnName="IsAvailableReportColumn" />
+                <ScalarProperty Name="IsRequiredReportColumn" ColumnName="IsRequiredReportColumn" />
+                <ScalarProperty Name="IsSelectableReportColumn" ColumnName="IsSelectableReportColumn" />
+                <ScalarProperty Name="IsOrderableReportColumn" ColumnName="IsOrderableReportColumn" />
+                <ScalarProperty Name="IsFilterableReportColumn" ColumnName="IsFilterableReportColumn" />
+                <ScalarProperty Name="ColumnType" ColumnName="ColumnType" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="IsAvailableExportColumn" ColumnName="IsAvailableExportColumn" />
+                <ScalarProperty Name="ListColumnGroupId" ColumnName="ListColumnGroupId" />
+                <ScalarProperty Name="ColumnCategory" ColumnName="ColumnCategory" />
+                <ScalarProperty Name="DBSortColumnName" ColumnName="DBSortColumnName" />
+                <ScalarProperty Name="DBFilterColumnName" ColumnName="DBFilterColumnName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListDisplayColumns">
+            <EntityTypeMapping TypeName="SRP3Model.ListDisplayColumn">
+              <MappingFragment StoreEntitySet="ListDisplayColumns">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="ListId" ColumnName="ListId" />
+                <ScalarProperty Name="ListColumnId" ColumnName="ListColumnId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListFilterColumns">
+            <EntityTypeMapping TypeName="SRP3Model.ListFilterColumn">
+              <MappingFragment StoreEntitySet="ListFilterColumns">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="ListId" ColumnName="ListId" />
+                <ScalarProperty Name="ListColumnId" ColumnName="ListColumnId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lists">
+            <EntityTypeMapping TypeName="SRP3Model.List">
+              <MappingFragment StoreEntitySet="Lists">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ListType" ColumnName="ListType" />
+                <ScalarProperty Name="ListSubType" ColumnName="ListSubType" />
+                <ScalarProperty Name="EntityType" ColumnName="EntityType" />
+                <ScalarProperty Name="ListKey" ColumnName="ListKey" />
+                <ScalarProperty Name="ListGroup" ColumnName="ListGroup" />
+                <ScalarProperty Name="QueryPattern" ColumnName="QueryPattern" />
+                <ScalarProperty Name="MainTable" ColumnName="MainTable" />
+                <ScalarProperty Name="IsPredefined" ColumnName="IsPredefined" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+                <ScalarProperty Name="HasQuickFilter" ColumnName="HasQuickFilter" />
+                <ScalarProperty Name="HasListDetails" ColumnName="HasListDetails" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ExportListId" ColumnName="ExportListId" />
+                <ScalarProperty Name="IsIncludeSummaryRow" ColumnName="IsIncludeSummaryRow" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListSortColumns">
+            <EntityTypeMapping TypeName="SRP3Model.ListSortColumn">
+              <MappingFragment StoreEntitySet="ListSortColumns">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SortDirection" ColumnName="SortDirection" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="ListId" ColumnName="ListId" />
+                <ScalarProperty Name="ListColumnId" ColumnName="ListColumnId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoadDataFiles">
+            <EntityTypeMapping TypeName="SRP3Model.LoadDataFile">
+              <MappingFragment StoreEntitySet="LoadDataFiles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="FileDate" ColumnName="FileDate" />
+                <ScalarProperty Name="LoadedDate" ColumnName="LoadedDate" />
+                <ScalarProperty Name="LoadedItem" ColumnName="LoadedItem" />
+                <ScalarProperty Name="SourceApplicationGUID" ColumnName="SourceApplicationGUID" />
+                <ScalarProperty Name="SourceApplicationVersion" ColumnName="SourceApplicationVersion" />
+                <ScalarProperty Name="LoadedToLocation" ColumnName="LoadedToLocation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Localities">
+            <EntityTypeMapping TypeName="SRP3Model.Locality">
+              <MappingFragment StoreEntitySet="Localities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LatinName" ColumnName="LatinName" />
+                <ScalarProperty Name="HasLocalSpiritualAssembly" ColumnName="HasLocalSpiritualAssembly" />
+                <ScalarProperty Name="HasLocalFund" ColumnName="HasLocalFund" />
+                <ScalarProperty Name="IsObservesNineteenDayFeast" ColumnName="IsObservesNineteenDayFeast" />
+                <ScalarProperty Name="NineteenDayFeastAttendance" ColumnName="NineteenDayFeastAttendance" />
+                <ScalarProperty Name="IsObservesHolyDays" ColumnName="IsObservesHolyDays" />
+                <ScalarProperty Name="HolyDayAttendance" ColumnName="HolyDayAttendance" />
+                <ScalarProperty Name="HasDevotionalMeetings" ColumnName="HasDevotionalMeetings" />
+                <ScalarProperty Name="DevotionalMeetings" ColumnName="DevotionalMeetings" />
+                <ScalarProperty Name="DevotionalMeetingAttendance" ColumnName="DevotionalMeetingAttendance" />
+                <ScalarProperty Name="DevotionalMeetingFriendAttendance" ColumnName="DevotionalMeetingFriendAttendance" />
+                <ScalarProperty Name="IsConductsHomeVisits" ColumnName="IsConductsHomeVisits" />
+                <ScalarProperty Name="HomesVisited" ColumnName="HomesVisited" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ClusterId" ColumnName="ClusterId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ImportedTimestamp" ColumnName="ImportedTimestamp" />
+                <ScalarProperty Name="ImportedFrom" ColumnName="ImportedFrom" />
+                <ScalarProperty Name="ImportedFileType" ColumnName="ImportedFileType" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="LegacyId" ColumnName="LegacyId" />
+                <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocalizedStudyItems">
+            <EntityTypeMapping TypeName="SRP3Model.LocalizedStudyItem">
+              <MappingFragment StoreEntitySet="LocalizedStudyItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="StudyItemTypeName" ColumnName="StudyItemTypeName" />
+                <ScalarProperty Name="StudyItemId" ColumnName="StudyItemId" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NationalCommunities">
+            <EntityTypeMapping TypeName="SRP3Model.NationalCommunity">
+              <MappingFragment StoreEntitySet="NationalCommunities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LatinName" ColumnName="LatinName" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ImportedTimestamp" ColumnName="ImportedTimestamp" />
+                <ScalarProperty Name="ImportedFrom" ColumnName="ImportedFrom" />
+                <ScalarProperty Name="ImportedFileType" ColumnName="ImportedFileType" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="LegacyId" ColumnName="LegacyId" />
+                <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+                <ScalarProperty Name="IsAnonymized" ColumnName="IsAnonymized" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="SRP3Model.Region">
+              <MappingFragment StoreEntitySet="Regions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LatinName" ColumnName="LatinName" />
+                <ScalarProperty Name="HasBahaiCouncil" ColumnName="HasBahaiCouncil" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="NationalCommunityId" ColumnName="NationalCommunityId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ImportedFrom" ColumnName="ImportedFrom" />
+                <ScalarProperty Name="ImportedTimestamp" ColumnName="ImportedTimestamp" />
+                <ScalarProperty Name="ImportedFileType" ColumnName="ImportedFileType" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="LegacyId" ColumnName="LegacyId" />
+                <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudyItems">
+            <EntityTypeMapping TypeName="SRP3Model.StudyItem">
+              <MappingFragment StoreEntitySet="StudyItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="ActivityType" ColumnName="ActivityType" />
+                <ScalarProperty Name="ActivityStudyItemType" ColumnName="ActivityStudyItemType" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subdivisions">
+            <EntityTypeMapping TypeName="SRP3Model.Subdivision">
+              <MappingFragment StoreEntitySet="Subdivisions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LatinName" ColumnName="LatinName" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="LocalityId" ColumnName="LocalityId" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedTimestamp" ColumnName="LastUpdatedTimestamp" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="ImportedTimestamp" ColumnName="ImportedTimestamp" />
+                <ScalarProperty Name="ImportedFrom" ColumnName="ImportedFrom" />
+                <ScalarProperty Name="ImportedFileType" ColumnName="ImportedFileType" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="LegacyId" ColumnName="LegacyId" />
+                <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
