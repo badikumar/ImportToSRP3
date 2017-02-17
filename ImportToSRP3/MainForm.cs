@@ -12,24 +12,111 @@ namespace ImportToSRP3
 {
     public partial class MainForm : Form
     {
-        private readonly string _connectionString;
+        private readonly SRP3Entities _dbContext;
+        private readonly Logger _logger;
+        private NationalCommunity _nationalCommunity;
+        private Region _region;
+        private Cluster _cluster;
         public MainForm()
         {
             InitializeComponent();
             var databases = SqlHelper.GetSRPDatabases();
-            toolStripStatusLabel1.Text = databases.Count == 1 ? "SRP Database found: " + databases.First() : "SRP Database not found. Please install SRP before running this tool.";
+            toolStripStatusLabel1.Text = 
+                databases.Count == 1 ? "SRP Database found: " + 
+                databases.First() : "SRP Database not found. Please install SRP before running this tool.";
             btnImport.Enabled = databases.Count == 1;
-            _connectionString = SqlHelper.GetEFConnectionString(databases.FirstOrDefault());
+            if (databases.Count == 1)
+            {
+                var connectionString = SqlHelper.GetEFConnectionString(databases.FirstOrDefault());
+                _dbContext = new SRP3Entities(connectionString);
+                _logger =  new Logger(txtLog);
+            }           
         }
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            //testImport(_connectionString);
             if (string.IsNullOrEmpty(txtFilePath.Text) ||
                 string.IsNullOrEmpty(txtCountryName.Text) ||
                 string.IsNullOrEmpty(txtRegionName.Text) ||
                 string.IsNullOrEmpty(txtClusterName.Text))
-                MessageBox.Show("All fields are required.","Required Fields",MessageBoxButtons.OK);
+            {
+                MessageBox.Show(@"All fields are required.", @"Required Fields", MessageBoxButtons.OK);
+                return;
+            }
+            _nationalCommunity = GetNationalCommunity();
+            _region = GetRegion();
+            _cluster = GetCluster();
+        }
+
+        private Cluster GetCluster()
+        {
+            _logger.Log("Getting Cluster ...");
+            var c = _dbContext.Clusters.FirstOrDefault(n => n.Name == txtClusterName.Text);
+            if (c == null)
+            {
+                _logger.LogEnd("Not found");
+                _logger.Log("Creating Cluster ..." + txtClusterName.Text);
+                c = new Cluster()
+                {
+                    Name = txtClusterName.Text,
+                    CreatedTimestamp = DateTime.Now,
+                    LastUpdatedTimestamp = DateTime.Now,
+                    Region = _region
+                };
+                _dbContext.Clusters.Add(c);
+                _dbContext.SaveChanges();
+                _logger.LogEnd("...Done");
+                return c;
+            }
+            _logger.LogEnd("Found " + txtClusterName.Text);
+            return c;
+        }
+
+        private Region GetRegion()
+        {
+            _logger.Log("Getting Region ...");
+            var r = _dbContext.Regions.FirstOrDefault(n => n.Name == txtRegionName.Text);
+            if (r == null)
+            {
+                _logger.LogEnd("Not found");
+                _logger.Log("Creating Region ..." + txtRegionName.Text);
+                r = new Region()
+                {
+                    Name = txtRegionName.Text,
+                    CreatedTimestamp = DateTime.Now,
+                    LastUpdatedTimestamp = DateTime.Now,
+                    NationalCommunity = _nationalCommunity
+                };
+                _dbContext.Regions.Add(r);
+                _dbContext.SaveChanges();
+                _logger.LogEnd("...Done");
+                return r;
+            }
+            _logger.LogEnd("Found " + txtRegionName.Text);
+            return r;
+        }
+
+        private NationalCommunity GetNationalCommunity()
+        {
+            _logger.Log("Getting National Community...");
+            var nc = _dbContext.NationalCommunities.FirstOrDefault(n => n.Name == txtCountryName.Text);
+            if (nc == null)
+            {
+                _logger.LogEnd("Not found");
+                _logger.Log("Creating National Community..." + txtCountryName.Text);
+                nc = new NationalCommunity()
+                {
+                    Name = txtCountryName.Text,
+                    CreatedTimestamp = DateTime.Now,
+                    LastUpdatedTimestamp = DateTime.Now
+                };
+                _dbContext.NationalCommunities.Add(nc);
+                _dbContext.SaveChanges();
+                _logger.LogEnd("...Done");
+                return nc;
+            }
+            _logger.LogEnd("Found " + txtCountryName.Text);
+            return nc;
         }
 
         private void testImport(string conn)
