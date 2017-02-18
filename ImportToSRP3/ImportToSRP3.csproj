@@ -150,6 +150,7 @@
     <Compile Include="LocalizedStudyItem.cs">
       <DependentUpon>SRP3Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UploadedFile.cs" />
     <Compile Include="NationalCommunity.cs">
       <DependentUpon>SRP3Model.tt</DependentUpon>
     </Compile>

@@ -42,7 +42,7 @@ namespace ImportToSRP3.Models
             return false;
         }
 
-        public static int ConvertMaleFemaleToInt(string str)
+        public static byte ConvertMaleFemaleToInt(string str)
         {
             if (!string.IsNullOrEmpty(str))
             {
