@@ -115,10 +115,6 @@ namespace ImportToSRP3
             {
                 String path = dialog.FileName; // get name of file
                 txtFilePath.Text = path;
-                //using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.Open), new UTF8Encoding())) // do anything you want, e.g. read it
-                //{
-                //    // ...
-                //}
             }
         }
     }

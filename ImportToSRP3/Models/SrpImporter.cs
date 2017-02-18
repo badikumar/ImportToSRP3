@@ -23,7 +23,14 @@ namespace ImportToSRP3.Models
 
         public void Import()
         {
-            
+            try
+            {
+                var uploadedFile = new UploadedFile(_dbContext,_request.FilePath);
+            }
+            catch (InvalidOperationException e)
+            {
+                _logger.LogEnd("Error: **** " + e.Message + " ****");
+            }
         }
 
         private Cluster GetCluster()
