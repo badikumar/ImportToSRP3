@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ImportToSRP3
+namespace ImportToSRP3.Models
 {
-    public class Logger
+    public class Logger:ILogger
     {
         private readonly TextBox _txtLog;
 

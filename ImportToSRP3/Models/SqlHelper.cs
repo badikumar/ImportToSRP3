@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ImportToSRP3
+namespace ImportToSRP3.Models
 {
-    public class SqlHelper
+    public static class SqlHelper
     {
-        public static List<string> GetSRPDatabases()
+        public static List<string> GetSrpDatabases()
         {
             List<string> list = new List<string>();
 
@@ -36,11 +32,13 @@ namespace ImportToSRP3
             return list;
         }
 
-        public static string GetEFConnectionString(string databaseName)
+        public static string GetEfConnectionString(string databaseName)
         {
             if (databaseName == null)
                 return string.Empty;
-            return string.Format(@"metadata=res://*/SRP3Model.csdl|res://*/SRP3Model.ssdl|res://*/SRP3Model.msl;provider=System.Data.SqlClient;provider connection string=""Data Source=(localdb)\SRP;Initial Catalog={0};Integrated Security=True;MultipleActiveResultSets=True;App=EntityFramework""" , databaseName);
+            return
+                $@"metadata=res://*/SRP3Model.csdl|res://*/SRP3Model.ssdl|res://*/SRP3Model.msl;provider=System.Data.SqlClient;provider connection string=""Data Source=(localdb)\SRP;Initial Catalog={
+                    databaseName};Integrated Security=True;MultipleActiveResultSets=True;App=EntityFramework""";
         }
     }
 }
