@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="NationalCommunity" Type="System.String" Scope="User">
-      <Value Profile="(Default)">England</Value>
+      <Value Profile="(Default)">South Africa</Value>
     </Setting>
     <Setting Name="Region" Type="System.String" Scope="User">
       <Value Profile="(Default)">Eastern Region</Value>

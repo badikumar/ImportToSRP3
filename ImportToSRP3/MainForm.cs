@@ -52,6 +52,8 @@ namespace ImportToSRP3
                 string.IsNullOrEmpty(txtClusterName.Text))
             {
                 MessageBox.Show(@"All fields are required.", @"Required Fields", MessageBoxButtons.OK);
+                btnImport.Enabled = true;
+                btnImport.Text = @"Import";
                 return;
             }
             _importer = new SrpImporter(_connectionString,_logger, new SrpImporterRequest()
