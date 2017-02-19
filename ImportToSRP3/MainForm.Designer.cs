@@ -62,8 +62,6 @@
             // 
             // txtCountryName
             // 
-            this.txtCountryName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.txtCountryName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.txtCountryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCountryName.Location = new System.Drawing.Point(110, 101);
             this.txtCountryName.Name = "txtCountryName";
@@ -218,6 +216,7 @@
             this.MaximumSize = new System.Drawing.Size(1024, 1024);
             this.Name = "MainForm";
             this.Text = "SRP3 Import from Excel";
+            this.Closing += MainForm_Closing;
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -226,6 +225,7 @@
             this.PerformLayout();
 
         }
+
 
         #endregion
 

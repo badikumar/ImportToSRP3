@@ -19,7 +19,14 @@ namespace ImportToSRP3
         private ISrpImporter _importer;
         public MainForm()
         {
+            
             InitializeComponent();
+
+            txtCountryName.Text = Properties.Settings.Default.NationalCommunity;
+            txtRegionName.Text = Properties.Settings.Default.Region;
+            txtClusterName.Text = Properties.Settings.Default.Cluster;
+            txtFilePath.Text = Properties.Settings.Default.FilePath;
+
             var databases = SqlHelper.GetSrpDatabases();
             toolStripStatusLabel1.Text =
                 databases.Count == 1 ? "SRP Database found: " +
@@ -31,6 +38,8 @@ namespace ImportToSRP3
                 _logger = new Logger(txtLog);
             }
         }
+
+        
 
         private void btnImport_Click(object sender, EventArgs e)
         {
@@ -117,5 +126,15 @@ namespace ImportToSRP3
                 txtFilePath.Text = path;
             }
         }
+
+        private void MainForm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Properties.Settings.Default.NationalCommunity = txtCountryName.Text;
+            Properties.Settings.Default.Region = txtRegionName.Text;
+            Properties.Settings.Default.Cluster= txtClusterName.Text;
+            Properties.Settings.Default.FilePath= txtFilePath.Text;
+        }
+
+
     }
 }

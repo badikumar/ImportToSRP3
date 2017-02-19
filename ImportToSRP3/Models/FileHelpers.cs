@@ -34,9 +34,9 @@ namespace ImportToSRP3.Models
         {
             if (!string.IsNullOrEmpty(str))
             {
-                if (str == "Yes")
+                if (str == "Yes" || str=="Y")
                     return true;
-                if (str == "No")
+                if (str == "No" || str=="N")
                     return false;
             }
             return false;

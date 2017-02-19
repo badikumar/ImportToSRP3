@@ -72,10 +72,13 @@ namespace ImportToSRP3.Models
                     var ageCategory = Convert.ToString(row[_result.Tables[0].Columns[3]]);
                     var estimatedAge = Convert.ToString(row[_result.Tables[0].Columns[4]]);
                     var birthDate = Convert.ToString(row[_result.Tables[0].Columns[5]]);
-                    i.EstimatedYearOfBirthDate = GetEstimatedYearOfBirthDate(ageCategory, estimatedAge, birthDate);
-                    //i.DisplayBirthDate = GetDisplayBirthDate(ageCategory, estimatedAge, birthDate);
-                    //i.BirthDate = GetBirthDate(ageCategory, estimatedAge, birthDate);
-
+                    GetEstimatedYearOfBirthDate(i,ageCategory, estimatedAge, birthDate);
+                    i.IsRegisteredBahai = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[_result.Tables[0].Columns[6]]));
+                    if (i.IsRegisteredBahai)
+                    {
+                        var registrationDate = Convert.ToString(row[_result.Tables[0].Columns[7]]);
+                        GetRegistrationDate(i, registrationDate);
+                    }
                     _individuals.Add(i);
                 }
                 return _individuals;
@@ -86,14 +89,33 @@ namespace ImportToSRP3.Models
             }
         }
 
-        private short GetEstimatedYearOfBirthDate(string ageCategory, string estimatedAge, string birthDate)
+        private void GetRegistrationDate(Individual i, string registrationDate)
+        {
+            if (!string.IsNullOrEmpty(registrationDate))
+            {
+                DateTime regDate;
+                if (DateTime.TryParse(registrationDate, out regDate))
+                {
+                    i.RegistrationDate = regDate;
+                    i.DisplayRegistrationDate = regDate.ToString("YYYY-MM-dd");
+                    return;
+                }
+            }
+            i.RegistrationDate = new DateTime(DateTime.Now.Year,1,1);
+            i.DisplayRegistrationDate = i.RegistrationDate.Value.ToString("YYYY-MM-dd");
+        }
+
+        private void GetEstimatedYearOfBirthDate(Individual i, string ageCategory, string estimatedAge, string birthDate)
         {
             if (!string.IsNullOrEmpty(birthDate))
             {
                 DateTime dob;
                 if (DateTime.TryParse(birthDate,out dob))
                 {
-                    return (short)dob.Year;
+                    i.EstimatedYearOfBirthDate = (short)dob.Year;
+                    i.BirthDate = dob;
+                    i.DisplayBirthDate = dob.ToString("YYYY-MM-dd");
+                    return;
                 }
             }
             if (!string.IsNullOrEmpty(estimatedAge))
@@ -101,30 +123,39 @@ namespace ImportToSRP3.Models
                 short age;
                 if (Int16.TryParse(estimatedAge, out age))
                 {
-                    return (short) (DateTime.Now.Year - age);
+                    i.EstimatedYearOfBirthDate = (short) (DateTime.Now.Year - age);
+                    i.BirthDate = new DateTime(i.EstimatedYearOfBirthDate.Value,1,1);
+                    i.DisplayBirthDate = i.EstimatedYearOfBirthDate.Value.ToString();
+                    return;
                 }
             }
             if (!string.IsNullOrEmpty(ageCategory))
             {
                 Random r = new Random();
+                
                 if (ageCategory == "Adult")
                 {
-                    return (short)(DateTime.Now.Year  - r.Next(21, 90));
+                    i.EstimatedYearOfBirthDate = (short)(DateTime.Now.Year  - r.Next(21, 90));
                 }
-                if (ageCategory == "Junior Youth")
+                else if (ageCategory == "Junior Youth")
                 {
-                    return (short)(DateTime.Now.Year - r.Next(11, 16));
+                    i.EstimatedYearOfBirthDate = (short)(DateTime.Now.Year - r.Next(11, 16));
                 }
-                if (ageCategory == "Youth")
+                else if (ageCategory == "Youth")
                 {
-                    return (short)(DateTime.Now.Year - r.Next(16, 21));
+                    i.EstimatedYearOfBirthDate = (short)(DateTime.Now.Year - r.Next(16, 21));
                 }
-                if (ageCategory == "Child")
+                else if (ageCategory == "Child")
                 {
-                    return (short)(DateTime.Now.Year - r.Next(0, 11));
+                    i.EstimatedYearOfBirthDate = (short) (DateTime.Now.Year - r.Next(0, 11));
                 }
+                else
+                {
+                    i.EstimatedYearOfBirthDate = 1900;
+                }
+                i.BirthDate = new DateTime(i.EstimatedYearOfBirthDate.Value, 1, 1);
+                i.DisplayBirthDate = i.EstimatedYearOfBirthDate.Value.ToString();
             }
-            return 1900;
         }
 
         public List<ActivityStudyItemIndividual> SerializeActivityStudyItemIndividuals()
