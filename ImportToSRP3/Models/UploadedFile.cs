@@ -69,8 +69,11 @@ namespace ImportToSRP3.Models
                     //Basics
                     i.FirstName = Convert.ToString(row[_result.Tables[0].Columns[0]]);
                     i.FamilyName = Convert.ToString(row[_result.Tables[0].Columns[1]]);
+                    if (string.IsNullOrEmpty(i.FirstName) && string.IsNullOrEmpty(i.FamilyName))
+                        continue;
+
+                    //Gender
                     i.Gender = FileHelpers.ConvertMaleFemaleToInt(Convert.ToString(row[_result.Tables[0].Columns[2]]));
-                    i.IsSelectedEstimatedYearOfBirthDate = true;
 
                     //Age/BirthDate
                     var ageCategory = Convert.ToString(row[_result.Tables[0].Columns[3]]);
@@ -329,6 +332,7 @@ namespace ImportToSRP3.Models
 
         private void GetEstimatedYearOfBirthDate(Individual i, string ageCategory, string estimatedAge, string birthDate)
         {
+            i.IsSelectedEstimatedYearOfBirthDate = true;
             if (!string.IsNullOrEmpty(birthDate))
             {
                 DateTime dob;
@@ -337,6 +341,7 @@ namespace ImportToSRP3.Models
                     i.EstimatedYearOfBirthDate = (short)dob.Year;
                     i.BirthDate = dob;
                     i.DisplayBirthDate = dob.ToString("yyyy-MM-dd");
+                    i.IsSelectedEstimatedYearOfBirthDate = false;
                     return;
                 }
             }
@@ -348,6 +353,7 @@ namespace ImportToSRP3.Models
                     i.EstimatedYearOfBirthDate = (short)(DateTime.Now.Year - age);
                     i.BirthDate = new DateTime(i.EstimatedYearOfBirthDate.Value, 1, 1);
                     i.DisplayBirthDate = i.EstimatedYearOfBirthDate.Value.ToString();
+                    
                     return;
                 }
             }

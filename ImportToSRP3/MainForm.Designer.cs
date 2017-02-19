@@ -53,10 +53,10 @@
             // 
             // btnImport
             // 
-            this.btnImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImport.Location = new System.Drawing.Point(262, 459);
+            this.btnImport.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImport.Location = new System.Drawing.Point(291, 413);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(225, 47);
+            this.btnImport.Size = new System.Drawing.Size(250, 42);
             this.btnImport.TabIndex = 0;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = true;
@@ -64,55 +64,55 @@
             // 
             // txtCountryName
             // 
-            this.txtCountryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCountryName.Location = new System.Drawing.Point(110, 101);
+            this.txtCountryName.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCountryName.Location = new System.Drawing.Point(122, 91);
             this.txtCountryName.Name = "txtCountryName";
-            this.txtCountryName.Size = new System.Drawing.Size(499, 35);
+            this.txtCountryName.Size = new System.Drawing.Size(554, 27);
             this.txtCountryName.TabIndex = 2;
             // 
             // txtRegionName
             // 
-            this.txtRegionName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegionName.Location = new System.Drawing.Point(110, 181);
+            this.txtRegionName.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegionName.Location = new System.Drawing.Point(122, 163);
             this.txtRegionName.Name = "txtRegionName";
-            this.txtRegionName.Size = new System.Drawing.Size(499, 35);
+            this.txtRegionName.Size = new System.Drawing.Size(554, 27);
             this.txtRegionName.TabIndex = 3;
             // 
             // txtClusterName
             // 
-            this.txtClusterName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClusterName.Location = new System.Drawing.Point(110, 264);
+            this.txtClusterName.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClusterName.Location = new System.Drawing.Point(122, 238);
             this.txtClusterName.Name = "txtClusterName";
-            this.txtClusterName.Size = new System.Drawing.Size(499, 35);
+            this.txtClusterName.Size = new System.Drawing.Size(554, 27);
             this.txtClusterName.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(105, 73);
+            this.label1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(117, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(332, 25);
+            this.label1.Size = new System.Drawing.Size(311, 18);
             this.label1.TabIndex = 5;
             this.label1.Text = "Country Name (National Community)";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(105, 153);
+            this.label2.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(117, 138);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 25);
+            this.label2.Size = new System.Drawing.Size(117, 18);
             this.label2.TabIndex = 6;
             this.label2.Text = "Region Name";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(105, 236);
+            this.label3.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(117, 212);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(131, 25);
+            this.label3.Size = new System.Drawing.Size(119, 18);
             this.label3.TabIndex = 7;
             this.label3.Text = "Cluster Name";
             // 
@@ -123,28 +123,29 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(105, 329);
+            this.label4.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(117, 296);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(195, 25);
+            this.label4.Size = new System.Drawing.Size(184, 18);
             this.label4.TabIndex = 9;
             this.label4.Text = "Choose file to upload";
             // 
             // txtFilePath
             // 
             this.txtFilePath.Enabled = false;
-            this.txtFilePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilePath.Location = new System.Drawing.Point(110, 357);
+            this.txtFilePath.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFilePath.Location = new System.Drawing.Point(122, 321);
             this.txtFilePath.Multiline = true;
             this.txtFilePath.Name = "txtFilePath";
-            this.txtFilePath.Size = new System.Drawing.Size(499, 35);
+            this.txtFilePath.Size = new System.Drawing.Size(554, 56);
             this.txtFilePath.TabIndex = 8;
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(615, 357);
+            this.btnBrowse.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowse.Location = new System.Drawing.Point(683, 321);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(75, 35);
+            this.btnBrowse.Size = new System.Drawing.Size(96, 31);
             this.btnBrowse.TabIndex = 10;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
@@ -153,9 +154,10 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.linkLabel1);
-            this.groupBox1.Location = new System.Drawing.Point(22, 21);
+            this.groupBox1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(24, 19);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(730, 421);
+            this.groupBox1.Size = new System.Drawing.Size(811, 379);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "First import of data into SRP3";
@@ -163,21 +165,22 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtLog);
-            this.groupBox2.Location = new System.Drawing.Point(22, 540);
+            this.groupBox2.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(24, 486);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(730, 178);
+            this.groupBox2.Size = new System.Drawing.Size(811, 160);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Log";
             // 
             // txtLog
             // 
-            this.txtLog.Location = new System.Drawing.Point(24, 39);
+            this.txtLog.Location = new System.Drawing.Point(27, 35);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(684, 116);
+            this.txtLog.Size = new System.Drawing.Size(760, 105);
             this.txtLog.TabIndex = 0;
             // 
             // statusStrip1
@@ -185,9 +188,11 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 753);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 661);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(781, 30);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(862, 30);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -200,9 +205,9 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(516, 35);
+            this.linkLabel1.Location = new System.Drawing.Point(573, 31);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(138, 20);
+            this.linkLabel1.Size = new System.Drawing.Size(163, 18);
             this.linkLabel1.TabIndex = 0;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Open template file";
@@ -210,9 +215,10 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(781, 783);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(862, 691);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.label4);
@@ -226,9 +232,11 @@
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1024, 1024);
             this.Name = "MainForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SRP3 Import from Excel";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
