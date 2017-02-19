@@ -1,4 +1,6 @@
-﻿namespace ImportToSRP3.Models
+﻿using System.Threading.Tasks;
+
+namespace ImportToSRP3.Models
 {
     public interface ISrpImporter
     {

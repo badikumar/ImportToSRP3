@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ImportToSRP3.Models
 {
@@ -25,14 +26,20 @@ namespace ImportToSRP3.Models
         {
             try
             {
-                var uploadedFile = new UploadedFile(_dbContext,_request.FilePath);
+                var uploadedFile = new UploadedFile(_cluster.Id,_dbContext,_request.FilePath);
+                _logger.LogEnd("Please wait while loading individuals. This might take a while...");
                 var individuals = uploadedFile.SerializeIndividuals();
-                _logger.LogEnd(individuals.Count + " individuals found.");
+                _logger.LogEnd("Ok." + individuals.Count + " individuals found.");
+                _logger.Log("Importing " + individuals.Count + " into SRP database...");
+                _dbContext.Individuals.AddRange(individuals);
+                _dbContext.SaveChanges();
+                _logger.LogEnd("Done");
             }
             catch (InvalidOperationException e)
             {
                 _logger.LogEnd("Error: **** " + e.Message + " ****");
             }
+            
         }
 
         private Cluster GetCluster()
