@@ -32,11 +32,12 @@ namespace ImportToSRP3.Models
 
         public static bool ConvertYesNoToBoolean(string str)
         {
+            str = str.ToLower();
             if (!string.IsNullOrEmpty(str))
             {
-                if (str == "Yes" || str=="Y")
+                if (str == "yes" || str=="y")
                     return true;
-                if (str == "No" || str=="N")
+                if (str == "no" || str=="n")
                     return false;
             }
             return false;
@@ -44,11 +45,12 @@ namespace ImportToSRP3.Models
 
         public static byte ConvertMaleFemaleToInt(string str)
         {
+            str = str.ToLower();
             if (!string.IsNullOrEmpty(str))
             {
-                if (str == "M" || str=="Male")
+                if (str == "m" || str=="male")
                     return 1;
-                if (str == "F" || str =="Female")
+                if (str == "f" || str =="female")
                     return 0;
             }
             return 1;
@@ -65,7 +67,7 @@ namespace ImportToSRP3.Models
                     reader.IsFirstRowAsColumnNames = true;
                     var dset = reader.AsDataSet();
                     //hack to remove empty row in the end
-                    dset.Tables[0].Rows.RemoveAt(reader.Depth - 2);
+                    //dset.Tables[0].Rows.RemoveAt(reader.Depth - 2);
                     reader.Close();
                     return dset;
                 }

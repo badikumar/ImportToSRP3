@@ -11,7 +11,7 @@ namespace ImportToSRP3.Models
         private readonly SrpImporterRequest _request;
         private readonly NationalCommunity _nationalCommunity;
         private readonly Region _region;
-        private Cluster _cluster;
+        private readonly Cluster _cluster;
         public SrpImporter(string connectionString, ILogger logger, SrpImporterRequest request)
         {
             _dbContext = new SRP3Entities(connectionString);

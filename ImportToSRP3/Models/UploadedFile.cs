@@ -354,20 +354,20 @@ namespace ImportToSRP3.Models
             if (!string.IsNullOrEmpty(ageCategory))
             {
                 Random r = new Random();
-
-                if (ageCategory == "Adult")
+                ageCategory = ageCategory.ToLower();
+                if (ageCategory == "adult")
                 {
                     i.EstimatedYearOfBirthDate = (short)(DateTime.Now.Year - r.Next(21, 60));
                 }
-                else if (ageCategory == "Junior Youth")
+                else if (ageCategory == "junior Youth")
                 {
                     i.EstimatedYearOfBirthDate = (short)(DateTime.Now.Year - r.Next(11, 16));
                 }
-                else if (ageCategory == "Youth")
+                else if (ageCategory == "youth")
                 {
                     i.EstimatedYearOfBirthDate = (short)(DateTime.Now.Year - r.Next(16, 21));
                 }
-                else if (ageCategory == "Child")
+                else if (ageCategory == "child")
                 {
                     i.EstimatedYearOfBirthDate = (short)(DateTime.Now.Year - r.Next(0, 11));
                 }

@@ -227,6 +227,9 @@
     <None Include="SRP3Model.edmx.diagram">
       <DependentUpon>SRP3Model.edmx</DependentUpon>
     </None>
+    <None Include="template\CommunityListTemplate.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

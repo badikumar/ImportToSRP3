@@ -45,6 +45,8 @@
             this.txtLog = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +64,7 @@
             // 
             // txtCountryName
             // 
-            this.txtCountryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCountryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCountryName.Location = new System.Drawing.Point(110, 101);
             this.txtCountryName.Name = "txtCountryName";
             this.txtCountryName.Size = new System.Drawing.Size(499, 35);
@@ -70,7 +72,7 @@
             // 
             // txtRegionName
             // 
-            this.txtRegionName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegionName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRegionName.Location = new System.Drawing.Point(110, 181);
             this.txtRegionName.Name = "txtRegionName";
             this.txtRegionName.Size = new System.Drawing.Size(499, 35);
@@ -78,7 +80,7 @@
             // 
             // txtClusterName
             // 
-            this.txtClusterName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClusterName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClusterName.Location = new System.Drawing.Point(110, 264);
             this.txtClusterName.Name = "txtClusterName";
             this.txtClusterName.Size = new System.Drawing.Size(499, 35);
@@ -150,12 +152,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Location = new System.Drawing.Point(22, 21);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(730, 421);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Initial import of data into SRP3";
+            this.groupBox1.Text = "First import of data into SRP3";
             // 
             // groupBox2
             // 
@@ -182,9 +185,9 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 938);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 753);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 30);
+            this.statusStrip1.Size = new System.Drawing.Size(781, 30);
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -194,11 +197,22 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(179, 25);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(516, 35);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(138, 20);
+            this.linkLabel1.TabIndex = 0;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Open template file";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 968);
+            this.ClientSize = new System.Drawing.Size(781, 783);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.label4);
@@ -216,7 +230,8 @@
             this.MaximumSize = new System.Drawing.Size(1024, 1024);
             this.Name = "MainForm";
             this.Text = "SRP3 Import from Excel";
-            this.Closing += MainForm_Closing;
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -246,6 +261,7 @@
         private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

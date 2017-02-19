@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,7 @@ namespace ImportToSRP3
         private void btnImport_Click(object sender, EventArgs e)
         {
             btnImport.Enabled = false;
+            btnImport.Text = @"Importing...";
             if (string.IsNullOrEmpty(txtFilePath.Text) ||
                 string.IsNullOrEmpty(txtCountryName.Text) ||
                 string.IsNullOrEmpty(txtRegionName.Text) ||
@@ -61,6 +63,7 @@ namespace ImportToSRP3
             });
             _importer.Import();
             btnImport.Enabled = true;
+            btnImport.Text = @"Import";
         }
 
 
@@ -85,6 +88,10 @@ namespace ImportToSRP3
             Properties.Settings.Default.Save();
         }
 
-
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            System.Diagnostics.Process.Start(Path.Combine(path,"template","CommunityListTemplate.xlsx"));
+        }
     }
 }
