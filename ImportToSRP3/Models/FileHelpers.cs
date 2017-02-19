@@ -15,7 +15,7 @@ namespace ImportToSRP3.Models
         {
             if (columns.Count != result.Tables[0].Columns.Count)
                 throw new InvalidOperationException("The file uploaded is invalid. Does not have all the prescribed columns from the template.");
-            for (var rindex = 0; rindex < result.Tables[0].Rows.Count; rindex++)
+            for (var rindex = 0; rindex < result.Tables[0].Rows.Count - 1; rindex++)
             {
                 var row = result.Tables[0].Rows[rindex];
                 for (var i = 0; i < columns.Count; i++)
@@ -59,11 +59,20 @@ namespace ImportToSRP3.Models
         {
             if (Path.GetFileName(filePath)?.EndsWith(".xlsx") ?? false )
             {
-                var reader = ExcelReaderFactory.CreateOpenXmlReader(new FileStream(filePath, FileMode.Open));
-                reader.IsFirstRowAsColumnNames = true;
-                var dset = reader.AsDataSet();
-                reader.Close();
-                return dset;
+                try
+                {
+                    var reader = ExcelReaderFactory.CreateOpenXmlReader(new FileStream(filePath, FileMode.Open));
+                    reader.IsFirstRowAsColumnNames = true;
+                    var dset = reader.AsDataSet();
+                    //hack to remove empty row in the end
+                    dset.Tables[0].Rows.RemoveAt(reader.Depth - 2);
+                    reader.Close();
+                    return dset;
+                }
+                catch (IOException ex)
+                {
+                    throw new InvalidOperationException("The file is open. Please close the file before importing.");
+                }
             }
             throw new InvalidOperationException("This file format is not supported");
         }

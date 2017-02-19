@@ -18,6 +18,7 @@ namespace ImportToSRP3.Models
             { "Estimated Age", false },
             { "Birth Date", false },
             { "Registered Bahai", true },
+            { "Date Registered", false },
             { "Locality", true },
             { "Focus Neighborhood", false },
             { "Address", false },
@@ -74,6 +75,8 @@ namespace ImportToSRP3.Models
                     i.EstimatedYearOfBirthDate = GetEstimatedYearOfBirthDate(ageCategory, estimatedAge, birthDate);
                     //i.DisplayBirthDate = GetDisplayBirthDate(ageCategory, estimatedAge, birthDate);
                     //i.BirthDate = GetBirthDate(ageCategory, estimatedAge, birthDate);
+
+                    _individuals.Add(i);
                 }
                 return _individuals;
             }

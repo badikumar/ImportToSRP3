@@ -26,6 +26,8 @@ namespace ImportToSRP3.Models
             try
             {
                 var uploadedFile = new UploadedFile(_dbContext,_request.FilePath);
+                var individuals = uploadedFile.SerializeIndividuals();
+                _logger.LogEnd(individuals.Count + " individuals found.");
             }
             catch (InvalidOperationException e)
             {

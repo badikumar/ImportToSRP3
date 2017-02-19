@@ -62,6 +62,8 @@
             // 
             // txtCountryName
             // 
+            this.txtCountryName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.txtCountryName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.txtCountryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCountryName.Location = new System.Drawing.Point(110, 101);
             this.txtCountryName.Name = "txtCountryName";
