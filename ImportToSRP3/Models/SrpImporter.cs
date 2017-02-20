@@ -55,7 +55,8 @@ namespace ImportToSRP3.Models
                     Name = _request.Cluster,
                     CreatedTimestamp = DateTime.Now,
                     LastUpdatedTimestamp = DateTime.Now,
-                    Region = _region
+                    Region = _region,
+                    GUID = Guid.NewGuid()
                 };
                 _dbContext.Clusters.Add(c);
                 _dbContext.SaveChanges();
@@ -79,7 +80,8 @@ namespace ImportToSRP3.Models
                     Name = _request.Region,
                     CreatedTimestamp = DateTime.Now,
                     LastUpdatedTimestamp = DateTime.Now,
-                    NationalCommunity = _nationalCommunity
+                    NationalCommunity = _nationalCommunity,
+                    GUID = Guid.NewGuid()
                 };
                 _dbContext.Regions.Add(r);
                 _dbContext.SaveChanges();
@@ -102,7 +104,8 @@ namespace ImportToSRP3.Models
                 {
                     Name = _request.NationalCommunity,
                     CreatedTimestamp = DateTime.Now,
-                    LastUpdatedTimestamp = DateTime.Now
+                    LastUpdatedTimestamp = DateTime.Now,
+                    GUID = Guid.NewGuid()
                 };
                 _dbContext.NationalCommunities.Add(nc);
                 _dbContext.SaveChanges();

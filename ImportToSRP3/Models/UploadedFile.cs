@@ -126,7 +126,7 @@ namespace ImportToSRP3.Models
 
                     i.CreatedTimestamp = DateTime.Now;
                     i.LastUpdatedTimestamp = DateTime.Now;
-
+                    i.GUID = Guid.NewGuid();
                     _individuals.Add(i);
                 }
                 return _individuals;
@@ -200,7 +200,7 @@ namespace ImportToSRP3.Models
                 IsCompleted = true,
                 StudyItemId = _dbContext.StudyItems.First(si => si.ActivityStudyItemType == "Book" && si.Number == number && si.Sequence == sequence).Id,
                 CreatedTimestamp = DateTime.Now,
-                LastUpdatedTimestamp = DateTime.Now
+                LastUpdatedTimestamp = DateTime.Now,
             };
 
             return asii;
@@ -305,7 +305,8 @@ namespace ImportToSRP3.Models
                     Name = localityName,
                     CreatedTimestamp = DateTime.Now,
                     LastUpdatedTimestamp = DateTime.Now,
-                    ClusterId = _clusterId
+                    ClusterId = _clusterId,
+                    GUID = Guid.NewGuid()
                 };
                 _dbContext.Localities.Add(loc);
                 _dbContext.SaveChanges();
