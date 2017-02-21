@@ -46,6 +46,7 @@
             this.txtLog = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cbIsNational = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -73,7 +74,7 @@
             // txtRegionName
             // 
             this.txtRegionName.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegionName.Location = new System.Drawing.Point(122, 163);
+            this.txtRegionName.Location = new System.Drawing.Point(122, 181);
             this.txtRegionName.Name = "txtRegionName";
             this.txtRegionName.Size = new System.Drawing.Size(554, 27);
             this.txtRegionName.TabIndex = 3;
@@ -81,7 +82,7 @@
             // txtClusterName
             // 
             this.txtClusterName.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClusterName.Location = new System.Drawing.Point(122, 238);
+            this.txtClusterName.Location = new System.Drawing.Point(122, 256);
             this.txtClusterName.Name = "txtClusterName";
             this.txtClusterName.Size = new System.Drawing.Size(554, 27);
             this.txtClusterName.TabIndex = 4;
@@ -100,7 +101,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(117, 144);
+            this.label2.Location = new System.Drawing.Point(117, 162);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 18);
             this.label2.TabIndex = 6;
@@ -110,7 +111,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(117, 219);
+            this.label3.Location = new System.Drawing.Point(117, 237);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(119, 18);
             this.label3.TabIndex = 7;
@@ -153,6 +154,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbIsNational);
             this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(24, 19);
@@ -212,6 +214,17 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(179, 25);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
+            // cbIsNational
+            // 
+            this.cbIsNational.AutoSize = true;
+            this.cbIsNational.Location = new System.Drawing.Point(96, 105);
+            this.cbIsNational.Name = "cbIsNational";
+            this.cbIsNational.Size = new System.Drawing.Size(232, 22);
+            this.cbIsNational.TabIndex = 1;
+            this.cbIsNational.Text = "Import at National level";
+            this.cbIsNational.UseVisualStyleBackColor = true;
+            this.cbIsNational.CheckedChanged += new System.EventHandler(this.cbIsNational_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -270,6 +283,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.CheckBox cbIsNational;
     }
 }
 

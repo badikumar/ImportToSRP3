@@ -14,8 +14,8 @@ namespace ImportToSRP3.Models
         public static bool FileErrorCheck(DataSet result, Dictionary<string, bool> columns)
         {
             if (columns.Count != result.Tables[0].Columns.Count)
-                throw new InvalidOperationException("The file uploaded is invalid. Does not have all the prescribed columns from the template.");
-            for (var rindex = 0; rindex < result.Tables[0].Rows.Count - 1; rindex++)
+                throw new InvalidOperationException("The file uploaded is invalid. Does not have all the prescribed columns from the template file.");
+            for (var rindex = 0; rindex < result.Tables[0].Rows.Count; rindex++)
             {
                 var row = result.Tables[0].Rows[rindex];
                 for (var i = 0; i < columns.Count; i++)
@@ -66,8 +66,6 @@ namespace ImportToSRP3.Models
                     var reader = ExcelReaderFactory.CreateOpenXmlReader(new FileStream(filePath, FileMode.Open));
                     reader.IsFirstRowAsColumnNames = true;
                     var dset = reader.AsDataSet();
-                    //hack to remove empty row in the end
-                    //dset.Tables[0].Rows.RemoveAt(reader.Depth - 2);
                     reader.Close();
                     return dset;
                 }

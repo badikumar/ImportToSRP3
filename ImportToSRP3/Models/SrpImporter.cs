@@ -12,21 +12,31 @@ namespace ImportToSRP3.Models
         private readonly NationalCommunity _nationalCommunity;
         private readonly Region _region;
         private readonly Cluster _cluster;
-        public SrpImporter(string connectionString, ILogger logger, SrpImporterRequest request)
+        private readonly bool _isNational;
+        public SrpImporter(string connectionString, ILogger logger, SrpImporterRequest request,bool isNational = false)
         {
+            _isNational = isNational;
             _dbContext = new SRP3Entities(connectionString);
             _logger = logger;
             _request = request;
             _nationalCommunity = GetNationalCommunity();
-            _region = GetRegion();
-            _cluster = GetCluster();
+            if (!isNational)
+            {
+                _region = GetRegion();
+                _cluster = GetCluster();
+            }
         }
 
         public void Import()
         {
             try
             {
-                var uploadedFile = new UploadedFile(_cluster.Id,_dbContext,_request.FilePath);
+                UploadedFileBase uploadedFile;
+                if (_isNational)
+                    uploadedFile = new UploadedFileNational(_nationalCommunity.Id, _dbContext, _request.FilePath);
+                else
+                    uploadedFile = new UploadedFile(_cluster.Id, _dbContext, _request.FilePath);
+                
                 _logger.LogEnd("Please wait while loading individuals. This might take a while...");
                 var individuals = uploadedFile.SerializeIndividuals();
                 _logger.LogEnd("Ok." + individuals.Count + " individuals found.");
@@ -45,7 +55,7 @@ namespace ImportToSRP3.Models
         private Cluster GetCluster()
         {
             _logger.Log("Getting Cluster ...");
-            var c = _dbContext.Clusters.FirstOrDefault(n => n.Name == _request.Cluster);
+            var c = _dbContext.Clusters.FirstOrDefault(n => n.Name == _request.Cluster && n.RegionId == _region.Id);
             if (c == null)
             {
                 _logger.LogEnd("Not found");
@@ -70,7 +80,7 @@ namespace ImportToSRP3.Models
         private Region GetRegion()
         {
             _logger.Log("Getting Region ...");
-            var r = _dbContext.Regions.FirstOrDefault(n => n.Name == _request.Region);
+            var r = _dbContext.Regions.FirstOrDefault(n => n.Name == _request.Region && n.NationalCommunityId == _nationalCommunity.Id);
             if (r == null)
             {
                 _logger.LogEnd("Not found");

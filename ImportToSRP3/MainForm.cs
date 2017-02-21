@@ -16,11 +16,11 @@ namespace ImportToSRP3
     {
         private readonly string _connectionString;
         private readonly Logger _logger;
-        
+
         private ISrpImporter _importer;
         public MainForm()
         {
-            
+
             InitializeComponent();
 
             txtCountryName.Text = Properties.Settings.Default.NationalCommunity;
@@ -40,29 +40,33 @@ namespace ImportToSRP3
             }
         }
 
-        
+
 
         private void btnImport_Click(object sender, EventArgs e)
         {
             btnImport.Enabled = false;
             btnImport.Text = @"Importing...";
-            if (string.IsNullOrEmpty(txtFilePath.Text) ||
+            if ((!cbIsNational.Checked && (string.IsNullOrEmpty(txtFilePath.Text) ||
                 string.IsNullOrEmpty(txtCountryName.Text) ||
                 string.IsNullOrEmpty(txtRegionName.Text) ||
-                string.IsNullOrEmpty(txtClusterName.Text))
+                string.IsNullOrEmpty(txtClusterName.Text)))
+                ||
+                (cbIsNational.Checked && ((string.IsNullOrEmpty(txtFilePath.Text) ||
+                string.IsNullOrEmpty(txtCountryName.Text)))))
+
             {
                 MessageBox.Show(@"All fields are required.", @"Required Fields", MessageBoxButtons.OK);
                 btnImport.Enabled = true;
                 btnImport.Text = @"Import";
                 return;
             }
-            _importer = new SrpImporter(_connectionString,_logger, new SrpImporterRequest()
+            _importer = new SrpImporter(_connectionString, _logger, new SrpImporterRequest()
             {
                 Cluster = txtClusterName.Text,
                 FilePath = txtFilePath.Text,
                 NationalCommunity = txtCountryName.Text,
                 Region = txtRegionName.Text
-            });
+            }, cbIsNational.Checked);
             _importer.Import();
             btnImport.Enabled = true;
             btnImport.Text = @"Import";
@@ -85,15 +89,34 @@ namespace ImportToSRP3
         {
             Properties.Settings.Default.NationalCommunity = txtCountryName.Text;
             Properties.Settings.Default.Region = txtRegionName.Text;
-            Properties.Settings.Default.Cluster= txtClusterName.Text;
-            Properties.Settings.Default.FilePath= txtFilePath.Text;
+            Properties.Settings.Default.Cluster = txtClusterName.Text;
+            Properties.Settings.Default.FilePath = txtFilePath.Text;
             Properties.Settings.Default.Save();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-            System.Diagnostics.Process.Start(Path.Combine(path,"template","CommunityListTemplate.xlsx"));
+            var filename = "CommunityListTemplate.xlsx";
+            if (cbIsNational.Checked)
+                filename = "CommunityListTemplateNational.xlsx";
+            System.Diagnostics.Process.Start(Path.Combine(path, "template", filename));
+        }
+
+        private void cbIsNational_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbIsNational.CheckState == CheckState.Checked)
+            {
+                txtRegionName.Text = string.Empty;
+                txtClusterName.Text = string.Empty;
+                txtRegionName.Enabled = false;
+                txtClusterName.Enabled = false;
+            }
+            else
+            {
+                txtRegionName.Enabled = true;
+                txtClusterName.Enabled = true;
+            }
         }
     }
 }
