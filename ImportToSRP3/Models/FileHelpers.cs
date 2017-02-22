@@ -9,7 +9,7 @@ using Excel;
 
 namespace ImportToSRP3.Models
 {
-    public class FileHelpers
+    public static class FileHelpers
     {
         public static bool FileErrorCheck(DataSet result, Dictionary<string, bool> columns)
         {

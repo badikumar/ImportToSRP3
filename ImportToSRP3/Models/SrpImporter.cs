@@ -35,7 +35,7 @@ namespace ImportToSRP3.Models
                 if (_isNational)
                     uploadedFile = new UploadedFileNational(_nationalCommunity.Id, _dbContext, _request.FilePath);
                 else
-                    uploadedFile = new UploadedFile(_cluster.Id, _dbContext, _request.FilePath);
+                    uploadedFile = new UploadedFileCluster(_cluster.Id, _dbContext, _request.FilePath);
                 
                 _logger.LogEnd("Please wait while loading individuals. This might take a while...");
                 var individuals = uploadedFile.SerializeIndividuals();
