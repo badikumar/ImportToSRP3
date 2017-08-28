@@ -29,6 +29,8 @@ namespace ImportToSRP3.Models
                 { "Work Telephone", false },
                 { "Cell Phone", false },
                 { "Email", false },
+                { "Comments", false },
+                { "Archived", false },
                 { "B1", false },
                 { "B2", false },
                 { "B3(1)", false },
@@ -105,19 +107,28 @@ namespace ImportToSRP3.Models
                     var email = Convert.ToString(row[Result.Tables[0].Columns[18]]);
                     AddIndividualEmails(i, email);
 
+                    //Comments
+                    var comments = Convert.ToString(row[Result.Tables[0].Columns[19]]);
+                    i.Comments = comments;
+
+                    //Archived
+                    var isArchived = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[20]]));
+                    i.IsArchived = isArchived;
+                    i.ArchivedTimestamp = DateTime.Now;
+
                     //Books                                                                                          
-                    var b1 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[19]]));
-                    var b2 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[20]]));
-                    var b31 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[21]]));
-                    var b32 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[22]]));
-                    var b33 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[23]]));
-                    var b4 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[24]]));
-                    var b5 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[25]]));
-                    var b6 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[26]]));
-                    var b7 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[27]]));
-                    var b8 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[28]]));
-                    var b9 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[29]]));
-                    var b10 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[30]]));
+                    var b1 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[21]]));
+                    var b2 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[22]]));
+                    var b31 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[23]]));
+                    var b32 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[24]]));
+                    var b33 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[25]]));
+                    var b4 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[26]]));
+                    var b5 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[27]]));
+                    var b6 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[28]]));
+                    var b7 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[29]]));
+                    var b8 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[30]]));
+                    var b9 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[31]]));
+                    var b10 = FileHelpers.ConvertYesNoToBoolean(Convert.ToString(row[Result.Tables[0].Columns[32]]));
                     AddBooks(i, b1, b2, b31, b32, b33, b4, b5, b6, b7, b8, b9, b10);
 
                     i.CreatedTimestamp = DateTime.Now;

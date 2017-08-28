@@ -203,8 +203,8 @@ namespace ImportToSRP3.Models
                     return;
                 }
             }
-            i.RegistrationDate = new DateTime(DateTime.Now.Year, 1, 1);
-            i.DisplayRegistrationDate = i.RegistrationDate.Value.ToString("yyyy-MM-dd");
+            //i.RegistrationDate = new DateTime(DateTime.Now.Year, 1, 1);
+            //i.DisplayRegistrationDate = i.RegistrationDate.Value.ToString("yyyy-MM-dd");
         }
 
         protected void GetEstimatedYearOfBirthDate(Individual i, string ageCategory, string estimatedAge, string birthDate)

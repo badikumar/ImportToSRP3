@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+    <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+      <section name="ImportToSRP3.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+    </sectionGroup>
+  </configSections>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.1" />
+  </startup>
+  <connectionStrings>
+    <!--<add name="SRP3Entities" connectionString="metadata=res://*/SRP3Model.csdl|res://*/SRP3Model.ssdl|res://*/SRP3Model.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.\SQLEXPRESS12;initial catalog=SRP3;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />-->
+    <add name="SRP3Entities" connectionString="metadata=res://*/SRP3Model.csdl|res://*/SRP3Model.ssdl|res://*/SRP3Model.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=(localdb)\SRP;Initial Catalog=C:\PROGRAMDATA\SRP\SRP.MDF;Integrated Security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+  </connectionStrings>
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework" />
+    <providers>
+      <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
+    </providers>
+  </entityFramework>
+  <userSettings>
+    <ImportToSRP3.Properties.Settings>
+      <setting name="NationalCommunity" serializeAs="String">
+        <value>South Africa</value>
+      </setting>
+      <setting name="Region" serializeAs="String">
+        <value>Eastern Region</value>
+      </setting>
+      <setting name="Cluster" serializeAs="String">
+        <value>Johannesburg</value>
+      </setting>
+      <setting name="FilePath" serializeAs="String">
+        <value />
+      </setting>
+    </ImportToSRP3.Properties.Settings>
+  </userSettings>
+</configuration>
